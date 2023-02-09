@@ -57,7 +57,7 @@ describe("increaseHit()", () => {
         const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
         const ship = createShip(shipId);
 
-        const actual = ship.hits;
+        const actual = ship.increaseHit();
         const expected = 1;
 
         expect(actual).toEqual(expected);
@@ -67,9 +67,8 @@ describe("increaseHit()", () => {
         const ship = createShip(shipId);
 
         ship.increaseHit();
-        ship.increaseHit();
+        const actual = ship.increaseHit();
 
-        const actual = ship.hits;
         const expected = 2;
 
         expect(actual).toEqual(expected);
