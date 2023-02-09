@@ -6,31 +6,30 @@ const SHIP_LIST = [
     { id: 5, name: "Carrier", length: 5 },
 ];
 
-const createShip = ({ id, name } = {}) => {
-    let ship = SHIP_LIST.find((item) => id === item.id && name === item.name);
+const createShip = (id) => {
+    let ship = SHIP_LIST.find((item) => id === item.id);
 
-    if (!ship) {
-        ship = {
-            name: "Patrol Boat",
-            length: 2,
-        };
-    }
-
-    return Object.assign(Object.create(proto), {
-        name: ship.name,
-        length: ship.length,
-        hits: 0,
-        sunk: false,
+    return Object.assign(Object.create(setProto(ship)), {
+        name: ship ? ship.name : "Patrol Boat",
     });
 };
 
-const proto = {
-    increaseHit() {
-        return (this.hits += 1);
-    },
-    isSunk() {
-        return this.hits === this.length;
-    },
+const setProto = (ship) => {
+    const length = ship ? ship.length : 2;
+    let hits = 0;
+    let sunk = false;
+
+    return {
+        increaseHit() {
+            return (hits += 1);
+        },
+        isSunk() {
+            if (hits === length) {
+                sunk = true;
+            }
+            return sunk;
+        },
+    };
 };
 
 export { createShip, SHIP_LIST };
