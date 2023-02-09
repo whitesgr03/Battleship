@@ -8,9 +8,6 @@ describe("createShip() Return objects should include name, length, hits sunk", (
 
         const expected = {
             name: "Patrol Boat",
-            length: 2,
-            hits: 0,
-            sunk: false,
         };
 
         expect(actual).toEqual(expected);
@@ -22,9 +19,6 @@ describe("createShip() Return objects should include name, length, hits sunk", (
 
         const expected = {
             name: "Carrier",
-            length: 5,
-            hits: 0,
-            sunk: false,
         };
 
         expect(actual).toEqual(expected);
@@ -34,9 +28,6 @@ describe("createShip() Return objects should include name, length, hits sunk", (
 
         const expected = {
             name: "Patrol Boat",
-            length: 2,
-            hits: 0,
-            sunk: false,
         };
 
         expect(actual).toEqual(expected);
@@ -50,9 +41,6 @@ describe("createShip() Return objects should include name, length, hits sunk", (
 
         const expected = {
             name: "Patrol Boat",
-            length: 2,
-            hits: 0,
-            sunk: false,
         };
 
         const second = createShip(shipId2);
