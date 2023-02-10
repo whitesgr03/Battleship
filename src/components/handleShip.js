@@ -36,6 +36,9 @@ const setProto = (ship) => {
         getPos() {
             return pos;
         },
+        getLength() {
+            return length;
+        },
     };
 };
 
