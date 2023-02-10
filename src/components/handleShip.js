@@ -29,6 +29,10 @@ const setProto = (ship) => {
             }
             return sunk;
         },
+        setPos(position) {
+            pos.push(position);
+            return position;
+        },
     };
 };
 
