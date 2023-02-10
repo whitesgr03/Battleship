@@ -6,8 +6,8 @@ const SHIP_LIST = [
     { id: 5, name: "Carrier", length: 5 },
 ];
 
-const createShip = (id) => {
-    let ship = SHIP_LIST.find((item) => id === item.id);
+const createShip = ({ id, name } = {}) => {
+    let ship = SHIP_LIST.find((item) => id === item.id || name === item.name);
 
     return Object.assign(Object.create(setProto(ship)), {
         name: ship ? ship.name : "Patrol Boat",
