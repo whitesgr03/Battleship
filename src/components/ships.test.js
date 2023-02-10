@@ -129,3 +129,22 @@ describe("getPos()", () => {
         expect(actual).toEqual(expected);
     });
 });
+
+describe("getLength()", () => {
+    test("should get 'Patrol Boat' length", () => {
+        const ship = createShip({ name: "Patrol Boat" });
+
+        const actual = ship.getLength();
+        const expected = 2;
+
+        expect(actual).toEqual(expected);
+    });
+    test("should get 'Carrier' length", () => {
+        const ship = createShip({ name: "Carrier" });
+
+        const actual = ship.getLength();
+        const expected = 5;
+
+        expect(actual).toEqual(expected);
+    });
+});
