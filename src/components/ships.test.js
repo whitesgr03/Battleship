@@ -101,3 +101,15 @@ describe("isSunk()", () => {
         expect(actual).toEqual(expected);
     });
 });
+
+describe("setPos()", () => {
+    test("should add position", () => {
+        const ship = createShip({ name: "Patrol Boat" });
+
+        const actual = ship.setPos([3, 3]);
+        const expected = [3, 3];
+
+        expect(actual).toEqual(expected);
+    });
+});
+
