@@ -18,6 +18,7 @@ const setProto = (ship) => {
     const length = ship ? ship.length : 2;
     let hits = 0;
     let sunk = false;
+    let pos = [];
 
     return {
         increaseHit() {
