@@ -79,3 +79,34 @@ describe("attack()", () => {
         expect(actual).toEqual(expected);
     });
 });
+
+describe("getAttackedPos()", () => {
+    test("get attacked position", () => {
+        const player1 = createPlayer("Jack");
+        const player2 = createPlayer("Brand");
+
+        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
+
+        player1.board.setShip({
+            id: shipId,
+            position: [3, 3],
+            axis: "vertical",
+            direction: "down",
+        });
+
+        player2.board.setShip({
+            name: "Submarine",
+            position: [6, 3],
+            axis: "vertical",
+            direction: "down",
+        });
+
+        player1.attack(player2, [6, 5]);
+
+        const actual = player1.getAttackedPos();
+
+        const expected = new Set(["(6, 5)"]);
+
+        expect(actual).toEqual(expected);
+    });
+});
