@@ -9,13 +9,10 @@ const createPlayer = (name) => {
 
 const setProto = () => {
     const attackedPos = new Set();
-    const getPos = ([x, y]) => {
-        return `(${x}, ${y})`;
-    };
 
     return {
         attack(target, position) {
-            const pos = getPos(position);
+            const pos = `(${position[0]}, ${position[1]})`;
 
             if (attackedPos.has(pos)) {
                 return {
