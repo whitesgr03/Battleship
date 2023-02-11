@@ -43,7 +43,8 @@ describe("attack() should input the player to attack, the position to attack", (
         const expected = {
             success: false,
             state: "repeat",
-            message: "attack position has been shot",
+            message:
+                "attack position has been attacked",
         };
 
         expect(actual).toEqual(expected);
@@ -51,7 +52,7 @@ describe("attack() should input the player to attack, the position to attack", (
 });
 
 describe("getAttackedPos()", () => {
-    test("get attacked position", () => {
+    test("should get attacked position", () => {
         const player1 = createPlayer("Jack");
         const player2 = createPlayer("Brand");
 
