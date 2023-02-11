@@ -18,7 +18,8 @@ const setProto = () => {
                 return {
                     success: false,
                     state: "repeat",
-                    message: "attack position has been shot",
+                    message:
+                        "attack position has been attacked",
                 };
             }
 
