@@ -33,6 +33,9 @@ const setProto = () => {
 
             return result;
         },
+        getAttackedPos() {
+            return attackedPos;
+        },
     };
 };
 
