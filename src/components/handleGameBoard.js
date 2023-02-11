@@ -10,9 +10,7 @@ const setProto = (size) => {
     const isOutsideBoard = ([x, y]) => {
         return x < 0 || y < 0 || x >= size || y >= size;
     };
-    const isAllShipsSunk = (ships) => {
-        return ships.every((ship) => ship.isSunk() === true);
-    };
+
     const hasShip = ([x, y]) => {
         for (let i = 0; i < ships.length; i++) {
             const shipPos = ships[i].getPos();
@@ -107,6 +105,9 @@ const setProto = (size) => {
                 state: "hit",
                 message: "attack hit a ship",
             };
+        },
+        isAllShipsSunk() {
+            return ships.every((ship) => ship.isSunk() === true);
         },
     };
 };
