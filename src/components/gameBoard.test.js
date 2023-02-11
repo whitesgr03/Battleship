@@ -114,7 +114,8 @@ describe("receiveAttack() should input a position", () => {
 
         const expected = {
             success: true,
-            message: "The attack hit a ship",
+            state: "hit",
+            message: "attack hit a ship",
         };
 
         expect(actual).toEqual(expected);
@@ -137,7 +138,8 @@ describe("receiveAttack() should input a position", () => {
 
         const expected = {
             success: true,
-            message: "The attack missed",
+            state: "missed",
+            message: "attack missed",
         };
 
         expect(actual).toEqual(expected);
@@ -160,7 +162,8 @@ describe("receiveAttack() should input a position", () => {
 
         const expected = {
             success: false,
-            message: "Attack is out of range of the board",
+            state: "out",
+            message: "attack is out of range of the board",
         };
 
         expect(actual).toEqual(expected);
@@ -187,7 +190,8 @@ describe("receiveAttack() should input a position", () => {
 
         const expected = {
             success: true,
-            message: "You win, all the enemy ships are sunk.",
+            state: "win",
+            message: "win, all the enemy ships are sunk.",
         };
 
         expect(actual).toEqual(expected);
