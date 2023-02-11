@@ -168,7 +168,8 @@ describe("receiveAttack() should input a position", () => {
 
         expect(actual).toEqual(expected);
     });
-    test("All of enemy ships have been sunk", () => {
+describe("isAllShipsSunk()", () => {
+    test("should get all ship sunk state", () => {
         const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
 
         const myBoard = createGameBoard();
@@ -186,13 +187,11 @@ describe("receiveAttack() should input a position", () => {
 
         enemyAttackPos = [3, 4];
 
-        const actual = myBoard.receiveAttack(enemyAttackPos);
+        myBoard.receiveAttack(enemyAttackPos);
 
-        const expected = {
-            success: true,
-            state: "win",
-            message: "win, all the enemy ships are sunk.",
-        };
+        const actual = myBoard.isAllShipsSunk();
+
+        const expected = true;
 
         expect(actual).toEqual(expected);
     });
