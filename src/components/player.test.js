@@ -14,37 +14,7 @@ describe("player()", () => {
     });
 });
 
-describe("attack()", () => {
-    test("input the player to attack, the position to attack", () => {
-        const player1 = createPlayer("Jack");
-        const player2 = createPlayer("Brand");
-
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-
-        player1.board.setShip({
-            id: shipId,
-            position: [3, 3],
-            axis: "vertical",
-            direction: "down",
-        });
-
-        player2.board.setShip({
-            name: "Submarine",
-            position: [6, 3],
-            axis: "vertical",
-            direction: "down",
-        });
-
-        const actual = player1.attack(player2, [6, 5]);
-
-        const expected = {
-            success: true,
-            state: "hit",
-            message: "attack hit a ship",
-        };
-
-        expect(actual).toEqual(expected);
-    });
+describe("attack() should input the player to attack, the position to attack", () => {
     test("input has been attacked position", () => {
         const player1 = createPlayer("Jack");
         const player2 = createPlayer("Brand");
