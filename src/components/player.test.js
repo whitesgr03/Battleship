@@ -12,12 +12,14 @@ describe("player()", () => {
         };
         expect(actual).toEqual(expected);
     });
-    test("Player performs the game actions", () => {
+});
+
+describe("attack()", () => {
+    test("input the player to attack, the position to attack", () => {
         const player1 = createPlayer("Jack");
         const player2 = createPlayer("Brand");
 
         const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-        const shipId2 = SHIP_LIST.find((item) => "Submarine" === item.name).id;
 
         player1.board.setShip({
             id: shipId,
@@ -27,7 +29,7 @@ describe("player()", () => {
         });
 
         player2.board.setShip({
-            id: shipId2,
+            name: "Submarine",
             position: [6, 3],
             axis: "vertical",
             direction: "down",
@@ -37,7 +39,41 @@ describe("player()", () => {
 
         const expected = {
             success: true,
-            message: "The attack hit a ship",
+            state: "hit",
+            message: "attack hit a ship",
+        };
+
+        expect(actual).toEqual(expected);
+    });
+    test("input has been attacked position", () => {
+        const player1 = createPlayer("Jack");
+        const player2 = createPlayer("Brand");
+
+        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
+
+        player1.board.setShip({
+            id: shipId,
+            position: [3, 3],
+            axis: "vertical",
+            direction: "down",
+        });
+
+        player2.board.setShip({
+            name: "Submarine",
+            position: [6, 3],
+            axis: "vertical",
+            direction: "down",
+        });
+
+        player1.attack(player2, [6, 5]);
+        player2.attack(player1, [3, 3]);
+
+        const actual = player1.attack(player2, [6, 5]);
+
+        const expected = {
+            success: false,
+            state: "repeat",
+            message: "attack position has been shot",
         };
 
         expect(actual).toEqual(expected);
