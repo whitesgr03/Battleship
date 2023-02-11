@@ -1,7 +1,7 @@
 import { createShip } from "./handleShip";
 
 const createGameBoard = (size = 10) => {
-    return Object.assign(Object.create(setProto(size)), {});
+    return Object.assign(Object.create(setProto(size)), {size});
 };
 
 const setProto = (size) => {
