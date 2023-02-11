@@ -1,7 +1,7 @@
 import { createShip } from "./handleShip";
 
 const createGameBoard = (size = 10) => {
-    return Object.assign(Object.create(setProto(size)), {size});
+    return Object.assign(Object.create(setProto(size)), { size });
 };
 
 const setProto = (size) => {
@@ -84,7 +84,7 @@ const setProto = (size) => {
             if (isOutsideBoard(position)) {
                 return {
                     success: false,
-                    state: 'out',
+                    state: "out",
                     message: "attack is out of range of the board",
                 };
             }
@@ -95,7 +95,7 @@ const setProto = (size) => {
                 return {
                     success: true,
                     state: "missed",
-                    message: "attack missed",
+                    message: "attack misses.",
                 };
 
             ship.increaseHit();
@@ -103,7 +103,7 @@ const setProto = (size) => {
             return {
                 success: true,
                 state: "hit",
-                message: "attack hit a ship",
+                message: "hit a ship.",
             };
         },
         isAllShipsSunk() {

@@ -115,7 +115,7 @@ describe("receiveAttack() should input a position", () => {
         const expected = {
             success: true,
             state: "hit",
-            message: "attack hit a ship",
+            message: "hit a ship.",
         };
 
         expect(actual).toEqual(expected);
@@ -139,7 +139,7 @@ describe("receiveAttack() should input a position", () => {
         const expected = {
             success: true,
             state: "missed",
-            message: "attack missed",
+            message: "attack misses.",
         };
 
         expect(actual).toEqual(expected);
@@ -163,11 +163,14 @@ describe("receiveAttack() should input a position", () => {
         const expected = {
             success: false,
             state: "out",
-            message: "attack is out of range of the board",
+            message:
+                "attack is out of range of the board",
         };
 
         expect(actual).toEqual(expected);
     });
+});
+
 describe("isAllShipsSunk()", () => {
     test("should get all ship sunk state", () => {
         const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
