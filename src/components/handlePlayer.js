@@ -20,7 +20,8 @@ const setProto = () => {
             if (attackedPos.has(pos)) {
                 return {
                     success: false,
-                    message: "This position has already been attacked",
+                    state: "repeat",
+                    message: "attack position has been shot",
                 };
             }
 
