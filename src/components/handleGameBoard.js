@@ -102,14 +102,6 @@ const setProto = (size) => {
 
             ship.increaseHit();
 
-            if (isAllShipsSunk(ships)) {
-                return {
-                    success: true,
-                    state: "win",
-                    message: "win, all the enemy ships are sunk.",
-                };
-            }
-
             return {
                 success: true,
                 state: "hit",
