@@ -17,7 +17,6 @@ const createShip = ({ id, name } = {}) => {
 const setProto = (ship) => {
     const length = ship ? ship.length : 2;
     let hits = 0;
-    let sunk = false;
     let pos = [];
 
     return {
@@ -26,9 +25,9 @@ const setProto = (ship) => {
         },
         isSunk() {
             if (hits === length) {
-                sunk = true;
+                return true;
             }
-            return sunk;
+            return false;
         },
         setPos(position) {
             pos.push(position);
