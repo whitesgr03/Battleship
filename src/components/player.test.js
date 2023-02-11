@@ -8,7 +8,7 @@ describe("player()", () => {
 
         const expected = {
             name: "Jeff",
-            board: {},
+            board: { size: 10 },
         };
         expect(actual).toEqual(expected);
     });
