@@ -1,0 +1,17 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    column-gap: 15px;
+    color: var(--logo-text);
+}
+
+footer a {
+    display: inline-flex;
+    vertical-align: bottom;
+}
+
+footer img {
+    width: 20px;
+    height: auto;
+}
