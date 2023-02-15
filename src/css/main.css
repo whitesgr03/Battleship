@@ -1,0 +1,341 @@
+main {
+    flex: 1;
+    position: relative;
+    transition: filter ease 1s;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+/* 按下 start 後啟動 */
+/* main.loading { 
+    filter: brightness(0);
+}
+main.loading .startPanel {
+    visibility: hidden;
+    transition: visibility ease 1s;
+} */
+
+.menu {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: url("../img/start.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: none;
+    /* 按下 start 後啟動 */
+}
+
+.shadow {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.startPanel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.startPanel .title {
+    font-size: 6rem;
+    text-align: center;
+    letter-spacing: 5px;
+    text-shadow: 0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light),
+        0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light);
+}
+
+.startPanel button {
+    font-size: 2rem;
+    padding: 20px 30px;
+    border: 5px solid var(--main-dark);
+    background-color: var(--main-dark);
+    border-radius: 40px;
+    color: var(--main-light);
+    cursor: pointer;
+    transition: background-color ease 0.3s, transform ease 0.1s;
+}
+
+.startPanel button:hover {
+    color: var(--main-dark);
+    background-color: var(--button-bgc-hover);
+}
+
+.startPanel button:active {
+    transform: scale(0.9);
+}
+
+.gameBoard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: url("../img/battlefield/map.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* display: none;  */
+    /* 按下 start 後啟動 */
+}
+
+.blur {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 1s;
+    /* display: none; */
+    /* 佈局完成之後 */
+}
+
+.blur.active {
+    backdrop-filter: blur(7px);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.strategyPanel {
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-dark);
+    color: var(--main-light);
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.strategyPanel .title {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.strategyPanel > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ships {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+    justify-content: space-between;
+}
+
+.ships li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.ships li > div {
+    position: relative;
+}
+
+.ships li img {
+    max-width: 100%;
+    height: auto;
+
+    filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
+        brightness(124%) contrast(102%);
+}
+
+.ships li > div img:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -54%);
+    filter: invert(22%) sepia(66%) saturate(3195%) hue-rotate(101deg)
+        brightness(102%) contrast(106%);
+    transition: filter ease 0.3s;
+}
+
+.ships li > div img:nth-child(2):hover {
+    filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
+        brightness(124%) contrast(102%);
+}
+
+.ships li > div:hover + p {
+    transform: scale(1.1);
+    transition: transform ease 0.3s;
+}
+
+.ships li > div:active + p {
+    transform: scale(1);
+}
+
+.grid {
+    max-width: 670px;
+    width: 100%;
+    height: 700px;
+    display: grid;
+    grid-template: 1fr 10fr 1fr / 1fr;
+}
+
+.grid > div:nth-child(2) {
+    display: grid;
+    grid-template: 1fr / 1fr 10fr 1fr;
+}
+
+.grid > div:nth-child(2n-1) {
+    display: flex;
+    margin: 0 3px;
+}
+
+.grid > div:nth-child(2n-1) > div {
+    flex: 1;
+}
+
+.grid > div:nth-child(2n-1) > div:not(:nth-child(1)) {
+    border-width: 0;
+    border-left: 1px solid;
+}
+
+.grid > div:nth-child(1) > div:not(:nth-child(1)) {
+    border-image: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0, 128, 0, 0.25),
+            rgba(0, 128, 0, 0.5),
+            green
+        )
+        1;
+}
+
+.grid > div:nth-child(3) > div:not(:nth-child(1)) {
+    border-image: linear-gradient(
+            to top,
+            transparent,
+            rgba(0, 128, 0, 0.25),
+            rgba(0, 128, 0, 0.5),
+            green
+        )
+        1;
+}
+
+.grid > div:nth-child(2) > :nth-child(2n-1) {
+    display: flex;
+    flex-direction: column;
+
+    border-width: 0;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+
+    margin: 3px 0;
+}
+
+.grid > div:nth-child(2) > :nth-child(2n-1) div {
+    flex: 1;
+}
+
+.grid > div:nth-child(2) > :nth-child(2n-1) div:not(:nth-child(1)) {
+    border-width: 0;
+    border-top: 1px solid;
+}
+
+.grid > div:nth-child(2) > :nth-child(1),
+.grid > div:nth-child(2) > :nth-child(1) div:not(:nth-child(1)) {
+    border-image: linear-gradient(
+            to right,
+            transparent,
+            rgba(0, 128, 0, 0.25),
+            rgba(0, 128, 0, 0.5),
+            green
+        )
+        1;
+}
+
+.grid > div:nth-child(2) > :nth-child(3),
+.grid > div:nth-child(2) > :nth-child(3) div:not(:nth-child(1)) {
+    border-image: linear-gradient(
+            to left,
+            transparent,
+            rgba(0, 128, 0, 0.25),
+            rgba(0, 128, 0, 0.5),
+            green
+        )
+        1;
+}
+
+.grid .container {
+    border: solid 3px var(--grid);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+}
+
+.grid .container > div:not(:nth-child(10n - 9)) {
+    border-left: 1px solid green;
+}
+
+.grid .container > div:not(:nth-child(-n + 10)) {
+    border-top: 1px solid green;
+}
+
+.control {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 0;
+    row-gap: 50px;
+}
+
+.control li {
+    color: var(--main-light);
+    display: flex;
+    padding-left: 50px;
+}
+
+.control li > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control li:nth-child(2) {
+    margin-bottom: auto;
+}
+
+.control button {
+    cursor: pointer;
+    border: 3px solid #008000;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    transition: all ease 0.3s;
+}
+
+.control button:hover {
+    border-color: var(--grid);
+    transform: scale(1.1);
+}
+
+.control button:active {
+    transform: scale(0.9);
+}
+
+.control button img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
+        brightness(124%) contrast(102%);
+}
