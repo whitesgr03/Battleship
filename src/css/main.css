@@ -336,3 +336,93 @@ main.loading .startPanel {
     filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
         brightness(124%) contrast(102%);
 }
+
+.battlefield {
+    background-color: transparent;
+    transform: rotate(45deg) skew(-10deg, -10deg);
+    display: flex;
+    column-gap: 50px;
+}
+
+.field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    --trapezium-height: 20px;
+    --trapezium-width: 100px;
+}
+
+.field .name {
+    padding: var(--trapezium-height) var(--trapezium-width);
+    position: relative;
+}
+
+.field .name::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    border-style: solid;
+    border-color: transparent;
+
+    border-top: none;
+    border-bottom-width: calc(var(--trapezium-height) * 2);
+    border-left-width: calc(var(--trapezium-width) / 2);
+    border-right-width: calc(var(--trapezium-width) / 2);
+}
+.field:nth-of-type(1) .name::before {
+    border-bottom-color: var(--main-dark);
+}
+.field:nth-of-type(2) .name::before {
+    border-bottom-color: red;
+}
+
+.field .name span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.field .grid {
+    position: relative;
+}
+
+.field .grid .x-axes,
+.field .grid .y-axes {
+    position: absolute;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.field .grid .x-axes {
+    right: 100%;
+    top: 0;
+    grid-template: repeat(10, 40px) / 40px;
+}
+
+.field .grid .y-axes {
+    right: 0;
+    top: 100%;
+    grid-template: 40px / repeat(10, 40px);
+}
+
+.field .grid .container {
+    display: grid;
+    grid-template: repeat(10, 40px) / repeat(10, 40px);
+    border: 1px solid var(--main-dark);
+}
+
+.field .grid .container div:not(:nth-child(10n - 9)) {
+    border-left: 1px solid var(--main-dark);
+}
+
+.field .grid .container div:not(:nth-child(-n + 10)) {
+    border-top: 1px solid var(--main-dark);
+}
