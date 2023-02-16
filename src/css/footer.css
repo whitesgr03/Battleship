@@ -4,6 +4,8 @@ footer {
     align-items: flex-end;
     column-gap: 15px;
     color: var(--logo-text);
+    z-index: 1;
+    background-color: var(--main-light);
 }
 
 footer a {
