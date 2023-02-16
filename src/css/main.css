@@ -174,34 +174,34 @@ main.loading .startPanel {
     transform: scale(1);
 }
 
-.grid {
-    max-width: 670px;
-    width: 100%;
+.strategyPanel .grid {
+    width: 700px;
+    min-width: 700px;
     height: 700px;
     display: grid;
     grid-template: 1fr 10fr 1fr / 1fr;
 }
 
-.grid > div:nth-child(2) {
+.strategyPanel .grid > div:nth-child(2) {
     display: grid;
     grid-template: 1fr / 1fr 10fr 1fr;
 }
 
-.grid > div:nth-child(2n-1) {
+.strategyPanel .grid > div:nth-child(2n-1) {
     display: flex;
     margin: 0 3px;
 }
 
-.grid > div:nth-child(2n-1) > div {
+.strategyPanel .grid > div:nth-child(2n-1) > div {
     flex: 1;
 }
 
-.grid > div:nth-child(2n-1) > div:not(:nth-child(1)) {
+.strategyPanel .grid > div:nth-child(2n-1) > div:not(:nth-child(1)) {
     border-width: 0;
     border-left: 1px solid;
 }
 
-.grid > div:nth-child(1) > div:not(:nth-child(1)) {
+.strategyPanel .grid > div:nth-child(1) > div:not(:nth-child(1)) {
     border-image: linear-gradient(
             to bottom,
             transparent,
@@ -212,7 +212,7 @@ main.loading .startPanel {
         1;
 }
 
-.grid > div:nth-child(3) > div:not(:nth-child(1)) {
+.strategyPanel .grid > div:nth-child(3) > div:not(:nth-child(1)) {
     border-image: linear-gradient(
             to top,
             transparent,
@@ -223,7 +223,7 @@ main.loading .startPanel {
         1;
 }
 
-.grid > div:nth-child(2) > :nth-child(2n-1) {
+.strategyPanel .grid > div:nth-child(2) > :nth-child(2n-1) {
     display: flex;
     flex-direction: column;
 
@@ -234,17 +234,21 @@ main.loading .startPanel {
     margin: 3px 0;
 }
 
-.grid > div:nth-child(2) > :nth-child(2n-1) div {
+.strategyPanel .grid > div:nth-child(2) > :nth-child(2n-1) div {
     flex: 1;
 }
 
-.grid > div:nth-child(2) > :nth-child(2n-1) div:not(:nth-child(1)) {
+.strategyPanel
+    .grid
+    > div:nth-child(2)
+    > :nth-child(2n-1)
+    div:not(:nth-child(1)) {
     border-width: 0;
     border-top: 1px solid;
 }
 
-.grid > div:nth-child(2) > :nth-child(1),
-.grid > div:nth-child(2) > :nth-child(1) div:not(:nth-child(1)) {
+.strategyPanel .grid > div:nth-child(2) > :nth-child(1),
+.strategyPanel .grid > div:nth-child(2) > :nth-child(1) div:not(:nth-child(1)) {
     border-image: linear-gradient(
             to right,
             transparent,
@@ -255,8 +259,8 @@ main.loading .startPanel {
         1;
 }
 
-.grid > div:nth-child(2) > :nth-child(3),
-.grid > div:nth-child(2) > :nth-child(3) div:not(:nth-child(1)) {
+.strategyPanel .grid > div:nth-child(2) > :nth-child(3),
+.strategyPanel .grid > div:nth-child(2) > :nth-child(3) div:not(:nth-child(1)) {
     border-image: linear-gradient(
             to left,
             transparent,
