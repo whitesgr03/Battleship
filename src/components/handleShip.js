@@ -3,7 +3,7 @@ const SHIP_LIST = [
     { id: 2, name: "Submarine", length: 3 },
     { id: 3, name: "Destroyer", length: 3 },
     { id: 4, name: "Battleship", length: 4 },
-    { id: 5, name: "Carrier", length: 5 },
+    { id: 5, name: "Carrier", length: 4 },
 ];
 
 const createShip = ({ id, name } = {}) => {

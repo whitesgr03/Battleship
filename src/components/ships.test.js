@@ -142,7 +142,7 @@ describe("getLength()", () => {
         const ship = createShip({ name: "Carrier" });
 
         const actual = ship.getLength();
-        const expected = 5;
+        const expected = 4;
 
         expect(actual).toEqual(expected);
     });
