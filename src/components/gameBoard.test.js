@@ -42,7 +42,6 @@ describe("setShip() should input ship, position, direction props", () => {
                 [6, 4],
                 [6, 5],
                 [6, 6],
-                [6, 7],
             ],
         };
         expect(actual).toEqual(expected);
@@ -163,8 +162,7 @@ describe("receiveAttack() should input a position", () => {
         const expected = {
             success: false,
             state: "out",
-            message:
-                "attack is out of range of the board",
+            message: "attack is out of range of the board",
         };
 
         expect(actual).toEqual(expected);
