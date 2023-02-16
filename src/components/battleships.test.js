@@ -1,4 +1,4 @@
-import { createBattleship } from "./battleships";
+import { createBattleship } from "./handleBattleships";
 import { createPlayer } from "./handlePlayer";
 import { SHIP_LIST } from "./handleShip";
 
