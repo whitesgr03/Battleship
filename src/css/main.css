@@ -344,7 +344,7 @@ main.loading .startPanel {
 }
 
 .strategyPanel .control button:active {
-    transform: scale(0.9);
+    transform: scale(1);
 }
 
 .strategyPanel .control button img {
