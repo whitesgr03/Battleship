@@ -479,3 +479,58 @@ main.loading .startPanel {
     );
 }
 
+.battlePanel .control {
+    position: absolute;
+    display: flex;
+    right: 20px;
+    top: 20px;
+}
+
+.battlePanel .control li {
+    color: var(--main-light);
+    display: flex;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.battlePanel .control li > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.battlePanel .control button {
+    cursor: pointer;
+    border: 3px solid var(--ship-silhouette);
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    transition: all ease 0.1s;
+}
+
+.battlePanel .control button:hover {
+    border: 3px solid var(--ship-silhouette-hover);
+}
+
+.battlePanel .control button:hover {
+    transform: scale(1.1);
+}
+
+.battlePanel .control button:active {
+    transform: scale(1);
+}
+
+.battlePanel .control button img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: invert(22%) sepia(66%) saturate(3195%) hue-rotate(101deg)
+        brightness(102%) contrast(106%);
+    transition: all ease 0.1s;
+}
+
+.battlePanel .control button img:hover {
+    filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
+        brightness(124%) contrast(102%);
+}
