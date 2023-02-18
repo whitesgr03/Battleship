@@ -152,6 +152,7 @@ main.loading .startPanel {
 }
 
 .strategyPanel .ships li > div img:nth-child(1) {
+    pointer-events: none;
     filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
         brightness(124%) contrast(102%);
 }
