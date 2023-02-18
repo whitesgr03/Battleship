@@ -281,11 +281,17 @@ main.loading .startPanel {
 }
 
 .strategyPanel .grid .container > div {
-    border-left: 1px solid green;
+    position: relative;
 }
 
 .strategyPanel .grid .container > div:not(:nth-child(10n - 9)) {
-    border-top: 1px solid green;
+    border-left: 1px solid var(--ship-silhouette);
+}
+
+.strategyPanel .grid .container > div:not(:nth-child(-n + 10)) {
+    border-top: 1px solid var(--ship-silhouette);
+}
+
 }
 
 .strategyPanel .control {
