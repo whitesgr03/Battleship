@@ -369,6 +369,7 @@ main.loading .startPanel {
 
     --trapezium-height: 20px;
     --trapezium-width: 100px;
+    position: relative;
 }
 
 .field .name {
