@@ -3,7 +3,7 @@ footer {
     justify-content: center;
     align-items: flex-end;
     column-gap: 15px;
-    color: var(--logo-text);
+    color: var(--main-dark);
     z-index: 1;
     background-color: var(--main-light);
 }
