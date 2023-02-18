@@ -444,3 +444,38 @@ main.loading .startPanel {
 .field .grid .container div:not(:nth-child(-n + 10)) {
     border-top: 1px solid var(--main-dark);
 }
+
+.fleetState {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-top: 1px solid var(--ship-silhouette);
+    border-right: 1px solid var(--ship-silhouette);
+    --damaged-percent: 50%;
+}
+
+.fleetState li {
+    background-color: var(--main-dark);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fleetState li:not(:last-child) {
+    border-bottom: 1px solid var(--ship-silhouette);
+}
+
+.fleetState li img {
+    max-width: 50%;
+    height: auto;
+}
+
+.fleetState li img.target {
+    background: linear-gradient(
+        to right,
+        red var(--damaged-percent),
+        var(--ship-silhouette) var(--damaged-percent)
+    );
+}
+
