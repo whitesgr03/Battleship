@@ -2,7 +2,8 @@ main {
     flex: 1;
     position: relative;
     transition: filter ease 1s;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: var(--main-dark);
+
 }
 
 /* 按下 start 後啟動 */
