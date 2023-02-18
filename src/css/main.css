@@ -147,7 +147,7 @@ main.loading .startPanel {
 }
 
 .strategyPanel .ships li img {
-    max-width: 100%;
+    min-width: 100%;
     height: auto;
 }
 
