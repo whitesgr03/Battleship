@@ -327,6 +327,15 @@ main.loading .startPanel {
     height: 100px;
     transition: all ease 0.1s;
 }
+
+.strategyPanel .control button:first-of-type.down {
+    transform: rotate(90deg) scaleY(1);
+}
+.strategyPanel .control button:first-of-type.down:hover {
+    transform: rotate(90deg) scaleY(1) scale(1.1);
+}
+.strategyPanel .control button:first-of-type.down:active {
+    transform: rotate(90deg) scaleY(1) scale(1);
 }
 
 .strategyPanel .control button:hover {
