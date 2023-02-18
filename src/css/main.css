@@ -339,6 +339,7 @@ main.loading .startPanel {
 }
 
 .strategyPanel .control button:hover {
+    border-color: var(--ship-silhouette-hover);
     transform: scale(1.1);
 }
 
