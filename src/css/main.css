@@ -272,7 +272,7 @@ main.loading .startPanel {
         1;
 }
 
-.grid .container {
+.strategyPanel .grid .container {
     border: solid 3px var(--grid);
     width: 100%;
     height: 100%;
@@ -280,15 +280,15 @@ main.loading .startPanel {
     grid-template: repeat(10, 1fr) / repeat(10, 1fr);
 }
 
-.grid .container > div:not(:nth-child(10n - 9)) {
+.strategyPanel .grid .container > div {
     border-left: 1px solid green;
 }
 
-.grid .container > div:not(:nth-child(-n + 10)) {
+.strategyPanel .grid .container > div:not(:nth-child(10n - 9)) {
     border-top: 1px solid green;
 }
 
-.control {
+.strategyPanel .control {
     flex: 1;
     height: 100%;
     display: flex;
@@ -297,13 +297,13 @@ main.loading .startPanel {
     row-gap: 50px;
 }
 
-.control li {
+.strategyPanel .control li {
     color: var(--main-light);
     display: flex;
     padding-left: 50px;
 }
 
-.control li > div {
+.strategyPanel .control li > div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -313,7 +313,7 @@ main.loading .startPanel {
     margin-bottom: auto;
 }
 
-.control button {
+.strategyPanel .control button {
     cursor: pointer;
     border: 3px solid #008000;
     margin-bottom: 10px;
@@ -322,16 +322,15 @@ main.loading .startPanel {
     transition: all ease 0.3s;
 }
 
-.control button:hover {
-    border-color: var(--grid);
+.strategyPanel .control button:hover {
     transform: scale(1.1);
 }
 
-.control button:active {
+.strategyPanel .control button:active {
     transform: scale(0.9);
 }
 
-.control button img {
+.strategyPanel .control button img {
     max-width: 100%;
     max-height: 100%;
     filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
