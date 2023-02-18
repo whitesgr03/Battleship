@@ -8,7 +8,8 @@
     --button-bgc-hover: rgb(255, 218, 87);
     --main-dark: rgb(0, 0, 0);
     --main-light: rgb(255, 255, 255);
-    --grid: rgb(31, 243, 3);
+    --ship-silhouette: rgb(0, 128, 0);
+    --ship-silhouette-hover: rgb(31, 243, 3);
 }
 
 * {
