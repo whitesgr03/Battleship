@@ -315,7 +315,7 @@ main.loading .startPanel {
     align-items: center;
 }
 
-.control li:nth-child(2) {
+.strategyPanel .control li:nth-child(2) {
     margin-bottom: auto;
 }
 
