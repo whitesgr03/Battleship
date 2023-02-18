@@ -123,7 +123,7 @@ main.loading .startPanel {
     justify-content: center;
 }
 
-.ships {
+.strategyPanel .ships {
     flex: 1;
     height: 100%;
     display: flex;
@@ -133,7 +133,7 @@ main.loading .startPanel {
     justify-content: space-between;
 }
 
-.ships li {
+.strategyPanel .ships li {
     width: 100%;
     display: flex;
     align-items: center;
@@ -142,19 +142,21 @@ main.loading .startPanel {
     row-gap: 10px;
 }
 
-.ships li > div {
+.strategyPanel .ships li > div {
     position: relative;
 }
 
-.ships li img {
+.strategyPanel .ships li img {
     max-width: 100%;
     height: auto;
+}
 
+.strategyPanel .ships li > div img:nth-child(1) {
     filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
         brightness(124%) contrast(102%);
 }
 
-.ships li > div img:nth-child(2) {
+.strategyPanel .ships li > div img:nth-child(2) {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -164,17 +166,17 @@ main.loading .startPanel {
     transition: filter ease 0.3s;
 }
 
-.ships li > div img:nth-child(2):hover {
+.strategyPanel .ships li > div img:nth-child(2):hover {
     filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
         brightness(124%) contrast(102%);
 }
 
-.ships li > div:hover + p {
+.strategyPanel .ships li > div:hover + p {
     transform: scale(1.1);
     transition: transform ease 0.3s;
 }
 
-.ships li > div:active + p {
+.strategyPanel .ships li > div:active + p {
     transform: scale(1);
 }
 
