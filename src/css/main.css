@@ -222,114 +222,149 @@ main.loading {
     transform: translateX(-50%) scale(1.1);
 }
 
-.strategyPanel .grid {
-    width: 700px;
-    min-width: 700px;
-    height: 700px;
-    display: grid;
-    grid-template: 1fr 10fr 1fr / 1fr;
+.panel .grid {
+    position: relative;
     --firstGradient: rgba(0, 128, 0, 0.25);
     --secondGradient: rgba(0, 128, 0, 0.5);
 }
 
-.strategyPanel .grid > div:nth-child(2) {
+.panel .grid .outer {
+    position: absolute;
     display: grid;
-    grid-template: 1fr / 1fr 10fr 1fr;
+    align-items: center;
+    justify-items: center;
 }
 
-.strategyPanel .grid > div:nth-child(2n-1) {
+.panel .grid .outer.top,
+.panel .grid .x-axes {
+    grid-template: 55px / repeat(10, 55px);
+    padding: 0 3px;
+}
+
+.panel .grid .outer.top > div,
+.panel .grid .x-axes > div {
+    height: 100%;
+    width: 100%;
     display: flex;
-    margin: 0 3px;
+    align-items: center;
+    justify-content: center;
+    border-left: solid 1px transparent;
 }
 
-.strategyPanel .grid > div:nth-child(2n-1) > div {
-    flex: 1;
+.panel .grid .outer.top > div:last-of-type,
+.panel .grid .x-axes > div:last-of-type {
+    border-right: solid 1px transparent;
 }
 
-.strategyPanel .grid > div:nth-child(2n-1) > div:not(:nth-child(1)) {
-    border-width: 0;
-    border-left: 1px solid;
+.panel .grid .outer.top {
+    left: 0;
+    bottom: 100%;
 }
 
-.strategyPanel .grid > div:nth-child(1) > div:not(:nth-child(1)) {
+.panel .grid .outer.top > div {
     border-image: linear-gradient(
             to bottom,
             transparent,
-            var(--firstGradient) var(--secondGradient) var(--ship-silhouette)
+            var(--firstGradient),
+            var(--secondGradient),
+            var(--ship-silhouette)
         )
         1;
 }
 
-.strategyPanel .grid > div:nth-child(3) > div:not(:nth-child(1)) {
+.panel .grid .x-axes {
+    left: 0;
+    top: 100%;
+}
+
+.panel .grid .x-axes > div {
     border-image: linear-gradient(
             to top,
             transparent,
-            var(--firstGradient) var(--secondGradient) var(--ship-silhouette)
+            var(--firstGradient),
+            var(--secondGradient),
+            var(--ship-silhouette)
         )
         1;
 }
 
-.strategyPanel .grid > div:nth-child(2) > :nth-child(2n-1) {
+.panel .grid .outer.right,
+.panel .grid .y-axes {
+    grid-template: repeat(10, 55px) / 55px;
+    padding: 3px 0;
+}
+.panel .grid .outer.right > div,
+.panel .grid .y-axes > div {
+    height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-
-    border-width: 0;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-
-    margin: 3px 0;
+    align-items: center;
+    justify-content: center;
+    border-top: solid 1px transparent;
 }
 
-.strategyPanel .grid > div:nth-child(2) > :nth-child(2n-1) div {
-    flex: 1;
+.panel .grid .outer.right > div:last-of-type,
+.panel .grid .y-axes > div:last-of-type {
+    border-bottom: solid 1px transparent;
 }
 
-.strategyPanel
-    .grid
-    > div:nth-child(2)
-    > :nth-child(2n-1)
-    div:not(:nth-child(1)) {
-    border-width: 0;
-    border-top: 1px solid;
+.panel .grid .y-axes.left {
+    right: 100%;
+    top: 0;
 }
 
-.strategyPanel .grid > div:nth-child(2) > :nth-child(1),
-.strategyPanel .grid > div:nth-child(2) > :nth-child(1) div:not(:nth-child(1)) {
+.panel .grid .y-axes.left > div {
     border-image: linear-gradient(
             to right,
             transparent,
-            var(--firstGradient) var(--secondGradient) var(--ship-silhouette)
+            var(--firstGradient),
+            var(--secondGradient),
+            var(--ship-silhouette)
         )
         1;
 }
 
-.strategyPanel .grid > div:nth-child(2) > :nth-child(3),
-.strategyPanel .grid > div:nth-child(2) > :nth-child(3) div:not(:nth-child(1)) {
+.panel .grid .outer.right {
+    left: 100%;
+    top: 0;
+}
+
+.panel .grid .outer.right > div {
     border-image: linear-gradient(
             to left,
             transparent,
-            var(--firstGradient) var(--secondGradient) var(--ship-silhouette)
+            var(--firstGradient),
+            var(--secondGradient),
+            var(--ship-silhouette)
         )
         1;
 }
 
-.strategyPanel .grid .container {
-    border: solid 3px var(--ship-silhouette-hover);
-    width: 100%;
-    height: 100%;
+.panel .grid .container {
     display: grid;
-    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+    border: solid 3px var(--ship-silhouette-hover);
+    grid-template: repeat(10, 55px) / repeat(10, 55px);
 }
 
-.strategyPanel .grid .container > div {
+.panel .grid .container > div {
     position: relative;
 }
 
-.strategyPanel .grid .container > div:not(:nth-child(10n - 9)) {
+.panel .grid .container > div.placed {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--main-dark) 0%,
+        var(--main-dark) 5%,
+        transparent 5%,
+        transparent 10%
+    );
+}
+
+.panel .grid .container > div:not(:nth-of-type(10n - 9)) {
     border-left: 1px solid var(--ship-silhouette);
 }
 
-.strategyPanel .grid .container > div:not(:nth-child(-n + 10)) {
+.panel .grid .container > div:not(:nth-of-type(-n + 10)) {
     border-top: 1px solid var(--ship-silhouette);
 }
 
