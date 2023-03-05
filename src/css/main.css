@@ -178,23 +178,48 @@ main.loading {
     align-items: center;
     justify-content: space-between;
 }
+
+.ships li {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.ships .contour {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
     filter: invert(22%) sepia(66%) saturate(3195%) hue-rotate(101deg)
         brightness(102%) contrast(106%);
-    transition: filter ease 0.3s;
 }
 
-.strategyPanel .ships li > div img:nth-child(2):hover {
-    filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
-        brightness(124%) contrast(102%);
+.ships .contour.carrier {
+    background-image: url("../img/strategyPanel/ships/carrier_contour.png");
+}
+.ships .contour.battleship {
+    background-image: url("../img/strategyPanel/ships/battleship_contour.png");
+}
+.ships .contour.destroyer {
+    background-image: url("../img/strategyPanel/ships/destroyer_contour.png");
+}
+.ships .contour.submarine {
+    background-image: url("../img/strategyPanel/ships/submarine_contour.png");
+}
+.ships .contour.patrolBoat {
+    background-image: url("../img/strategyPanel/ships/patrol_boat_contour.png");
 }
 
-.strategyPanel .ships li > div:hover + p {
-    transform: scale(1.1);
-    transition: transform ease 0.3s;
+.ships .name {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease;
 }
 
-.strategyPanel .ships li > div:active + p {
-    transform: scale(1);
+.ships .silhouette:hover + .name {
+    transform: translateX(-50%) scale(1.1);
 }
 
 .strategyPanel .grid {
