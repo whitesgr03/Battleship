@@ -679,3 +679,176 @@ main.loading {
     filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
         brightness(124%) contrast(102%);
 }
+
+.alertPanel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.alertPanel.blur {
+    backdrop-filter: blur(7px);
+    background-color: var(--shadow-color);
+    opacity: 1;
+    visibility: visible;
+}
+
+.alertPanel button.clickEffect {
+    animation: press 0.2s linear;
+}
+
+@keyframes press {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.alert {
+    border: 4px solid var(--main-dark);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+    border-radius: 20px;
+    padding: 20px 50px;
+    background-color: var(--logo-text);
+    row-gap: 40px;
+    box-shadow: 8px 8px 0px 0px var(--main-dark);
+}
+
+.alert.show {
+    display: flex;
+}
+
+.alert button {
+    font-size: 1.5rem;
+    width: 100%;
+    border: 4px solid var(--main-dark);
+    background-color: var(--main-dark);
+    border-radius: 40px;
+    padding: 10px 0;
+    color: var(--main-light);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.alert button:hover {
+    color: var(--main-dark);
+    background-color: var(--button-bgc-hover);
+}
+
+.result {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 100px;
+}
+
+.result.show {
+    display: flex;
+}
+
+.result span {
+    font-size: 6rem;
+    color: var(--main-dark);
+    letter-spacing: 5px;
+    text-shadow: 0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light),
+        0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light),
+        0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light),
+        0 1px var(--title-shadow), -1px 0 var(--title-shadow2),
+        -1px 2px var(--title-shadow), -2px 1px var(--title-shadow2),
+        -2px 3px var(--title-shadow), -3px 2px var(--title-shadow2),
+        -3px 4px var(--title-shadow), -4px 3px var(--title-shadow2),
+        -4px 5px var(--title-shadow), -5px 4px var(--title-shadow2),
+        -5px 6px var(--title-shadow), -6px 5px var(--title-shadow2),
+        -6px 7px var(--title-shadow), -7px 6px var(--title-shadow2),
+        -7px 8px var(--title-shadow), -8px 7px var(--title-shadow2);
+}
+
+.result button {
+    font-size: 2rem;
+    padding: 20px 30px;
+    border: 5px solid var(--main-dark);
+    background-color: var(--main-dark);
+    border-radius: 40px;
+    color: var(--main-light);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.result .restartBtn:hover {
+    color: var(--main-dark);
+    background-color: var(--button-bgc-hover);
+}
+
+.result button:active {
+    transform: scale(0.9);
+}
+
+.result .closeBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    border: 0;
+    color: var(--main-light);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result .closeBtn::before,
+.result .closeBtn::after {
+    content: "";
+    position: absolute;
+
+    width: 8px;
+    height: 100%;
+    border-radius: 20px;
+
+    background: var(--main-light);
+}
+
+.closeBtn:hover::before,
+.closeBtn:hover::after {
+    background: var(--button-bgc-hover);
+    border: 5px solid var(--main-dark);
+}
+
+.result .closeBtn::before {
+    transform: rotate(45deg);
+}
+
+.result .closeBtn::after {
+    transform: rotate(-45deg);
+}
+
+.result .closeBtn div {
+    position: absolute;
+    width: 8px;
+    height: 50%;
+    background: var(--main-light);
+    transform: rotate(45deg);
+    z-index: 1;
+}
+
+.result .closeBtn:hover div {
+    background: var(--button-bgc-hover);
+}
