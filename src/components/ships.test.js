@@ -53,9 +53,7 @@ describe("increaseHit()", () => {
 });
 describe("isSunk()", () => {
     test("should check if length and hit are equal (1)", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-
-        const ship = createShip({ id: shipId });
+        const ship = createShip({ name: "Patrol Boat" });
 
         const actual = ship.isSunk();
         const expected = false;
@@ -63,9 +61,7 @@ describe("isSunk()", () => {
         expect(actual).toEqual(expected);
     });
     test("should check if length and hit are equal (2)", () => {
-        const shipId = SHIP_LIST.find((item) => "Submarine" === item.name).id;
-
-        const ship = createShip({ id: shipId });
+        const ship = createShip({ name: "Destroyer" });
 
         ship.increaseHit();
         ship.increaseHit();
@@ -77,7 +73,6 @@ describe("isSunk()", () => {
         expect(actual).toEqual(expected);
     });
 });
-
 describe("setPos()", () => {
     test("should add position", () => {
         const ship = createShip({ name: "Patrol Boat" });
