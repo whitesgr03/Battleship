@@ -6,7 +6,7 @@ const createPlayer = (name, board) => {
 };
 
 const setProto = () => {
-    const attackedPos = new Set();
+    let attackedPos = [];
 
     return {
         attack(target, position) {
