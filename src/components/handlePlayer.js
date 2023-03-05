@@ -16,6 +16,10 @@ const setProto = () => {
             attackedPos = [...attackedPos, position];
             return attackedPos;
         },
+        isDuplicateAttack(position) {
+            return attackedPos.some(
+                ([x, y]) => position[0] === x && position[1] === y
+            );
         },
     };
 };
