@@ -57,7 +57,7 @@ main.loading {
         -7px 8px var(--title-shadow), -8px 7px var(--title-shadow2);
 }
 
-.startPanel button {
+.startPanel .startBtn {
     font-size: 2rem;
     padding: 20px 30px;
     border: 5px solid var(--main-dark);
@@ -65,15 +65,15 @@ main.loading {
     border-radius: 40px;
     color: var(--main-light);
     cursor: pointer;
-    transition: background-color ease 0.3s, transform ease 0.1s;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.startPanel button:hover {
+.startPanel .startBtn:hover {
     color: var(--main-dark);
     background-color: var(--button-bgc-hover);
 }
 
-.startPanel button:active {
+.startPanel .startBtn:active {
     transform: scale(0.9);
 }
 
