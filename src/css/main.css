@@ -615,6 +615,7 @@ main.loading {
 }
 
 .fleetState li img {
+    --damaged-percent: 0%;
     max-width: 50%;
     height: auto;
 }
