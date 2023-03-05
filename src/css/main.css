@@ -45,7 +45,16 @@ main.loading {
     text-align: center;
     letter-spacing: 5px;
     text-shadow: 0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light),
-        0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light);
+        0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light),
+        0px 0px 5px var(--main-light), 0px 0px 5px var(--main-light),
+        0 1px var(--title-shadow), -1px 0 var(--title-shadow2),
+        -1px 2px var(--title-shadow), -2px 1px var(--title-shadow2),
+        -2px 3px var(--title-shadow), -3px 2px var(--title-shadow2),
+        -3px 4px var(--title-shadow), -4px 3px var(--title-shadow2),
+        -4px 5px var(--title-shadow), -5px 4px var(--title-shadow2),
+        -5px 6px var(--title-shadow), -6px 5px var(--title-shadow2),
+        -6px 7px var(--title-shadow), -7px 6px var(--title-shadow2),
+        -7px 8px var(--title-shadow), -8px 7px var(--title-shadow2);
 }
 
 .startPanel button {
