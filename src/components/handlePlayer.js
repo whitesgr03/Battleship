@@ -12,25 +12,10 @@ const setProto = () => {
         attack(target, position) {
             const pos = `(${position[0]}, ${position[1]})`;
 
-            if (attackedPos.has(pos)) {
-                return {
-                    success: false,
-                    state: "repeat",
-                    message:
-                        "attack position has been attacked",
-                };
-            }
-
-            const result = target.board.receiveAttack(position);
-
-            if (result.success) {
-                attackedPos.add(pos);
-            }
-
-            return result;
-        },
-        getAttackedPos() {
+        addAttackedPos(position) {
+            attackedPos = [...attackedPos, position];
             return attackedPos;
+        },
         },
     };
 };
