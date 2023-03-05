@@ -123,6 +123,28 @@ describe("getHealthyPercent()", () => {
         expect(actual).toEqual(expected);
     });
 });
+describe("setRotate()", () => {
+    test("should add rotate", () => {
+        const ship = createShip({ name: "Patrol Boat" });
+
+        const actual = ship.setRotate(true);
+        const expected = true;
+
+        expect(actual).toEqual(expected);
+    });
+});
+describe("getRotate()", () => {
+    test("should get rotate", () => {
+        const ship = createShip({ name: "Patrol Boat" });
+
+        ship.setRotate(false);
+
+        const actual = ship.getRotate();
+        const expected = false;
+
+        expect(actual).toEqual(expected);
+    });
+});
         const ship = createShip({ name: "Patrol Boat" });
 
         const actual = ship.getLength();
