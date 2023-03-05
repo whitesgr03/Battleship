@@ -1,4 +1,4 @@
-import { createShip, SHIP_LIST } from "./handleShip";
+import { createShip } from "./handleShip";
 
 describe("createShip() Return objects should include name, length, hits sunk", () => {
     test("Input id create 'Patrol Boat'", () => {
