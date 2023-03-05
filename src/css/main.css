@@ -618,9 +618,6 @@ main.loading {
     --damaged-percent: 0%;
     max-width: 50%;
     height: auto;
-}
-
-.fleetState li img.target {
     background: linear-gradient(
         to right,
         red var(--damaged-percent),
