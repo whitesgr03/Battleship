@@ -587,6 +587,13 @@ main.loading {
     transform: skew(10deg, 10deg) rotate(-48deg) scaleX(-1);
 }
 
+.strategyPanel.blur + .battlePanel .fleetState {
+    display: none;
+}
+.strategyPanel.blur + .battlePanel .control {
+    display: none;
+}
+
 .fleetState {
     position: absolute;
     left: 0;
