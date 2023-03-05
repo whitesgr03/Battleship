@@ -1,31 +1,16 @@
 import { createGameBoard } from "./handleGameBoard";
 import { createShip } from "./handleShip";
 
-describe("setShip() should input ship, position, direction props", () => {
-    test("Set the 'Patrol Boat' to pos (3, 3) vertically down", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-
-        const board = createGameBoard();
-
-        const actual = board.setShip({
-            id: shipId,
-            position: [3, 3],
-            axis: "vertical",
-            direction: "down",
-        });
+describe("createGameBoard() ", () => {
+    test("Return objects should include board", () => {
+        const actual = createGameBoard({ size: 10 });
 
         const expected = {
-            success: true,
-            name: "Patrol Boat",
-            position: [
-                [3, 3],
-                [3, 4],
-            ],
+            size: 10,
         };
         expect(actual).toEqual(expected);
     });
-    test("Set the 'Carrier' to pos (6, 3) vertically down", () => {
-        const board = createGameBoard();
+});
 
         const actual = board.setShip({
             name: "Carrier",
