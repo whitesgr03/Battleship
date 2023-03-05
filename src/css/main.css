@@ -3,7 +3,10 @@ main {
     position: relative;
     transition: filter ease 1s;
     background-color: var(--main-dark);
-
+    --enemy-name-color: red;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --title-shadow: #808d93;
+    --title-shadow2: #cdd2d5;
 }
 
 /* 按下 start 後啟動 */
