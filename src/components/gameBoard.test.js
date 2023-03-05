@@ -190,29 +190,55 @@ describe("receiveAttack()", () => {
 });
 
 describe("isAllShipsSunk()", () => {
-    test("should get all ship sunk state", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
+    test("Ship sunk after correct hit", () => {
+        const myBoard = createGameBoard({ size: 10 });
 
-        const myBoard = createGameBoard();
+        const ship = createShip({ name: "Patrol Boat" });
 
-        myBoard.setShip({
-            id: shipId,
-            position: [3, 3],
-            axis: "vertical",
-            direction: "down",
-        });
+        ship.setPos([
+            [3, 3],
+            [2, 3],
+        ]);
+
+        myBoard.addShip(ship);
 
         let enemyAttackPos = [3, 3];
 
         myBoard.receiveAttack(enemyAttackPos);
 
-        enemyAttackPos = [3, 4];
+        enemyAttackPos = [2, 3];
 
         myBoard.receiveAttack(enemyAttackPos);
 
         const actual = myBoard.isAllShipsSunk();
 
         const expected = true;
+
+        expect(actual).toEqual(expected);
+    });
+    test("The ship does not sink when it misses", () => {
+        const myBoard = createGameBoard({ size: 10 });
+
+        const ship = createShip({ name: "Patrol Boat" });
+
+        ship.setPos([
+            [3, 3],
+            [2, 3],
+        ]);
+
+        myBoard.addShip(ship);
+
+        let enemyAttackPos = [3, 3];
+
+        myBoard.receiveAttack(enemyAttackPos);
+
+        enemyAttackPos = [4, 3];
+
+        myBoard.receiveAttack(enemyAttackPos);
+
+        const actual = myBoard.isAllShipsSunk();
+
+        const expected = false;
 
         expect(actual).toEqual(expected);
     });
