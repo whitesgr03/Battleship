@@ -17,7 +17,7 @@ const createShip = ({ name } = {}) => {
 };
 
 const setProto = (ship) => {
-    const length = ship ? ship.length : 2;
+    const length = ship.length;
     let hits = 0;
     let pos = [];
 
