@@ -530,6 +530,63 @@ main.loading {
     border-top: 1px solid var(--main-dark);
 }
 
+.field .grid .container > div {
+    position: relative;
+}
+
+.field .grid .container > div.hit {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.field .grid .container > div.missed {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.field.activeHover .grid .container > div:not(.hit):not(.missed):hover {
+    background-color: rgba(0, 128, 0, 0.5);
+    cursor: pointer;
+}
+
+.field .grid .container .ship {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+}
+
+.field .grid .container .ship.destroyed {
+    opacity: 0;
+}
+
+.field .grid .container .ship.shake {
+    animation: shake 0.3s 2 linear;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(-48%, -52%);
+    }
+    50% {
+        transform: translate(-52%, -48%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.field .grid .container .ship img {
+    min-width: 100%;
+    height: auto;
+    transform: skew(10deg, 10deg) rotate(-40deg) scaleX(1);
+}
+
+.field .grid .container .ship img.rotateDown {
+    transform: skew(10deg, 10deg) rotate(-48deg) scaleX(-1);
+}
+
 .fleetState {
     position: absolute;
     left: 0;
