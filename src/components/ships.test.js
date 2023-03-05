@@ -101,9 +101,28 @@ describe("getPos()", () => {
         expect(actual).toEqual(expected);
     });
 });
+describe("getHealthyPercent()", () => {
+    test("should get 'Patrol Boat' Healthy Percent 50", () => {
+        const ship = createShip({ name: "Patrol Boat" });
 
-describe("getLength()", () => {
-    test("should get 'Patrol Boat' length", () => {
+        ship.increaseHit();
+
+        const actual = ship.getHealthyPercent();
+        const expected = 50;
+
+        expect(actual).toEqual(expected);
+    });
+    test("should get 'Carrier' Healthy Percent 25 ", () => {
+        const ship = createShip({ name: "Carrier" });
+
+        ship.increaseHit();
+
+        const actual = ship.getHealthyPercent();
+        const expected = 25;
+
+        expect(actual).toEqual(expected);
+    });
+});
         const ship = createShip({ name: "Patrol Boat" });
 
         const actual = ship.getLength();
