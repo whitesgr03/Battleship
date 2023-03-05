@@ -485,7 +485,7 @@ main.loading {
     border-bottom-color: var(--enemy-name-color);
 }
 
-.field .name span {
+.field .name {
     position: absolute;
     top: 50%;
     left: 50%;
