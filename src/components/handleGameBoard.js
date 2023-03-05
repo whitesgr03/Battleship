@@ -59,9 +59,31 @@ const setProto = (size) => {
         getAllShips() {
             return [...ships];
         },
+        isOutBounds(positions) {
+            for (let [x, y] of positions) {
+                if (x < 1 || y < 1 || x > size || y > size) {
+                    return true;
+                }
+            }
+            return false;
+        },
+        isOverlapShip(positions, name) {
+            for (let ship of ships) {
+                if (name !== ship.name) {
+                    const allShipPos = [
+                        ...ship.getPos(),
+                        ...getAdjacentPos(ship.getPos()),
+                    ];
+                    const result = allShipPos.some(([x, y]) =>
+                        positions.some(([x2, y2]) => x === x2 && y === y2)
+                    );
+
+                    if (result) return true;
+                }
             }
 
-            const ship = hasShip(position);
+            return false;
+        },
 
             if (!ship)
                 return {
