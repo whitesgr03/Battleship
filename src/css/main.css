@@ -1,7 +1,7 @@
 main {
     flex: 1;
     position: relative;
-    transition: filter ease 1s;
+    transition: filter 1s ease;
     background-color: var(--main-dark);
     --enemy-name-color: red;
     --shadow-color: rgba(0, 0, 0, 0.4);
@@ -9,14 +9,9 @@ main {
     --title-shadow2: #cdd2d5;
 }
 
-/* 按下 start 後啟動 */
-/* main.loading { 
+main.loading {
     filter: brightness(0);
 }
-main.loading .startPanel {
-    visibility: hidden;
-    transition: visibility ease 1s;
-} */
 
 .menu {
     width: 100%;
