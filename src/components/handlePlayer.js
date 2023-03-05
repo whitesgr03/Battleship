@@ -10,7 +10,8 @@ const setProto = () => {
 
     return {
         attack(target, position) {
-            const pos = `(${position[0]}, ${position[1]})`;
+            return target.board.receiveAttack(position);
+        },
 
         addAttackedPos(position) {
             attackedPos = [...attackedPos, position];
