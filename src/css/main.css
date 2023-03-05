@@ -88,49 +88,31 @@ main.loading {
     color: var(--main-light);
 }
 
-.gameBoard > div:first-of-type {
+.strategyPanel {
     opacity: 0;
-    transition: all ease 0.3s;
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 1;
     visibility: hidden;
-}
-
-/* .gameBoard > div:first-of-type.blur {
-    visibility: visible;
-    opacity: 1;
-    backdrop-filter: blur(7px);
-    background-color: rgba(0, 0, 0, 0.5);
-} */
-
-.strategyPanel {
-    width: 100%;
-    height: 100%;
     padding: 20px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: all 1s ease;
 }
 
-.strategyPanel > div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.strategyPanel.blur {
+    visibility: visible;
+    opacity: 1;
+    backdrop-filter: blur(7px);
+    background-color: var(--shadow-color);
+    transition: all 0.3s ease;
 }
 
-.strategyPanel .ships {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 60px 0;
-    justify-content: space-between;
+.strategyPanel .title {
+    margin-bottom: 20px;
 }
 
 .strategyPanel .ships li {
