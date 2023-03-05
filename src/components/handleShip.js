@@ -1,9 +1,9 @@
 const SHIP_LIST = [
-    { id: 1, name: "Patrol Boat", length: 2 },
-    { id: 2, name: "Submarine", length: 3 },
-    { id: 3, name: "Destroyer", length: 3 },
-    { id: 4, name: "Battleship", length: 4 },
-    { id: 5, name: "Carrier", length: 4 },
+    { name: "Patrol Boat", length: 2 },
+    { name: "Submarine", length: 3 },
+    { name: "Destroyer", length: 3 },
+    { name: "Battleship", length: 4 },
+    { name: "Carrier", length: 4 },
 ];
 
 const createShip = ({ id, name } = {}) => {
