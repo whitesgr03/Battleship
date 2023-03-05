@@ -49,32 +49,56 @@ describe("addAttackedPos() should input position", () => {
     });
 });
 
-describe("getAttackedPos()", () => {
-    test("should get attacked position", () => {
-        const player1 = createPlayer("Jack");
-        const player2 = createPlayer("Brand");
+describe("isDuplicateAttack()", () => {
+    test("No Duplicate Attack", () => {
+        const player1 = createPlayer("Jack", createGameBoard({ size: 10 }));
+        const player2 = createPlayer("Brand", createGameBoard({ size: 10 }));
 
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
+        const ship = createShip({ name: "Patrol Boat" });
+        ship.setPos([
+            [3, 3],
+            [2, 3],
+        ]);
+        player1.board.addShip(ship);
 
-        player1.board.setShip({
-            id: shipId,
-            position: [3, 3],
-            axis: "vertical",
-            direction: "down",
-        });
+        const ship2 = createShip({ name: "Patrol Boat" });
+        ship2.setPos([
+            [3, 3],
+            [2, 3],
+        ]);
+        player2.board.addShip(ship2);
 
-        player2.board.setShip({
-            name: "Submarine",
-            position: [6, 3],
-            axis: "vertical",
-            direction: "down",
-        });
+        const actual = player1.isDuplicateAttack([6, 5]);
+
+        const expected = false;
+
+        expect(actual).toEqual(expected);
+    });
+    test("Duplicate Attack", () => {
+        const player1 = createPlayer("Jack", createGameBoard({ size: 10 }));
+        const player2 = createPlayer("Brand", createGameBoard({ size: 10 }));
+
+        const ship = createShip({ name: "Patrol Boat" });
+        ship.setPos([
+            [3, 3],
+            [2, 3],
+        ]);
+        player1.board.addShip(ship);
+
+        const ship2 = createShip({ name: "Patrol Boat" });
+        ship2.setPos([
+            [3, 3],
+            [2, 3],
+        ]);
+        player2.board.addShip(ship2);
 
         player1.attack(player2, [6, 5]);
 
-        const actual = player1.getAttackedPos();
+        player1.addAttackedPos([6, 5]);
 
-        const expected = new Set(["(6, 5)"]);
+        const actual = player1.isDuplicateAttack([6, 5]);
+
+        const expected = true;
 
         expect(actual).toEqual(expected);
     });
