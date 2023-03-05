@@ -21,8 +21,6 @@ main.loading {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    display: none;
-    /* 按下 start 後啟動 */
 }
 
 .shadow {
