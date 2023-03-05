@@ -2,10 +2,12 @@ import { createPlayer } from "./handlePlayer";
 import { createGameBoard } from "./handleGameBoard";
 import { createShip } from "./handleShip";
 
-describe("player()", () => {
+describe("createPlayer()", () => {
     test("Return objects should include name, board", () => {
         const name = "Jeff";
-        const actual = createPlayer(name);
+        const myBoard = createGameBoard({ size: 10 });
+
+        const actual = createPlayer(name, myBoard);
 
         const expected = {
             name: "Jeff",
