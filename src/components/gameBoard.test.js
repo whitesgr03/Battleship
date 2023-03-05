@@ -12,47 +12,63 @@ describe("createGameBoard() ", () => {
     });
 });
 
-        const actual = board.setShip({
-            name: "Carrier",
-            position: [6, 3],
-            axis: "vertical",
-            direction: "down",
-        });
+describe("addShip()", () => {
+    test("should add ship ", () => {
+        const myBoard = createGameBoard({ size: 10 });
+        const ship = createShip({ name: "Patrol Boat" });
 
-        const expected = {
-            success: true,
-            name: "Carrier",
-            position: [
-                [6, 3],
-                [6, 4],
-                [6, 5],
-                [6, 6],
-            ],
-        };
-        expect(actual).toEqual(expected);
-    });
-    test("input position is out of range of the board", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-
-        const board = createGameBoard();
-
-        const actual = board.setShip({
-            id: shipId,
-            position: [9, 0],
-            axis: "vertical",
-            direction: "up",
-        });
-
-        const expected = {
-            success: false,
-            message: "Ship is out of range of the board",
-        };
+        const actual = myBoard.addShip(ship);
+        const expected = [{ name: "Patrol Boat" }];
 
         expect(actual).toEqual(expected);
     });
-    test("input position is overlaps with other ships", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-        const shipId2 = SHIP_LIST.find((item) => "Submarine" === item.name).id;
+    test("add two ship should get two ship", () => {
+        const myBoard = createGameBoard({ size: 10 });
+
+        const ship = createShip({ name: "Patrol Boat" });
+        const ship2 = createShip({ name: "Battleship" });
+
+        myBoard.addShip(ship);
+
+        const actual = myBoard.addShip(ship2);
+
+        const expected = [{ name: "Patrol Boat" }, { name: "Battleship" }];
+
+        expect(actual).toEqual(expected);
+    });
+});
+
+describe("getShip() should input name", () => {
+    test("should get a ship by name ", () => {
+        const myBoard = createGameBoard({ size: 10 });
+        const ship = createShip({ name: "Patrol Boat" });
+        const ship2 = createShip({ name: "Battleship" });
+
+        myBoard.addShip(ship);
+        myBoard.addShip(ship2);
+
+        const actual = myBoard.getShip("Patrol Boat");
+        const expected = { name: "Patrol Boat" };
+
+        expect(actual).toEqual(expected);
+    });
+});
+
+describe("getAllShips() should input name", () => {
+    test("should get ship ", () => {
+        const myBoard = createGameBoard({ size: 10 });
+        const ship = createShip({ name: "Patrol Boat" });
+        const ship2 = createShip({ name: "Battleship" });
+
+        myBoard.addShip(ship);
+        myBoard.addShip(ship2);
+
+        const actual = myBoard.getAllShips();
+        const expected = [{ name: "Patrol Boat" }, { name: "Battleship" }];
+
+        expect(actual).toEqual(expected);
+    });
+});
 
         const board = createGameBoard();
 
