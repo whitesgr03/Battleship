@@ -26,17 +26,14 @@ const setProto = (ship) => {
             return (hits += 1);
         },
         isSunk() {
-            if (hits === length) {
-                return true;
-            }
-            return false;
+            return hits === length;
         },
         setPos(position) {
-            pos.push(position);
-            return position;
+            pos = position;
+            return [...pos];
         },
         getPos() {
-            return pos;
+            return [...pos];
         },
         getLength() {
             return length;
