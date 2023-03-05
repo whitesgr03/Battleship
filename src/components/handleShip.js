@@ -19,7 +19,9 @@ const createShip = ({ name } = {}) => {
 const setProto = (ship) => {
     const length = ship.length;
     let hits = 0;
+    let rotate = false;
     let pos = [];
+    let centerPos = [];
 
     return {
         increaseHit() {
