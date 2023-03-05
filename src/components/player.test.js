@@ -17,38 +17,33 @@ describe("createPlayer()", () => {
     });
 });
 
-describe("attack() should input the player to attack, the position to attack", () => {
-    test("input has been attacked position", () => {
-        const player1 = createPlayer("Jack");
-        const player2 = createPlayer("Brand");
+describe("addAttackedPos() should input position", () => {
+    test("add position", () => {
+        const player1 = createPlayer("Jack", createGameBoard({ size: 10 }));
 
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
+        const position = [5, 6];
 
-        player1.board.setShip({
-            id: shipId,
-            position: [3, 3],
-            axis: "vertical",
-            direction: "down",
-        });
+        const actual = player1.addAttackedPos(position);
 
-        player2.board.setShip({
-            name: "Submarine",
-            position: [6, 3],
-            axis: "vertical",
-            direction: "down",
-        });
+        const expected = [[5, 6]];
 
-        player1.attack(player2, [6, 5]);
-        player2.attack(player1, [3, 3]);
+        expect(actual).toEqual(expected);
+    });
 
-        const actual = player1.attack(player2, [6, 5]);
+    test("add two position", () => {
+        const player1 = createPlayer("Jack", createGameBoard({ size: 10 }));
 
-        const expected = {
-            success: false,
-            state: "repeat",
-            message:
-                "attack position has been attacked",
-        };
+        const position = [5, 6];
+        const position2 = [5, 5];
+
+        player1.addAttackedPos(position);
+
+        const actual = player1.addAttackedPos(position2);
+
+        const expected = [
+            [5, 6],
+            [5, 5],
+        ];
 
         expect(actual).toEqual(expected);
     });
