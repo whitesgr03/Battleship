@@ -6,11 +6,13 @@ const SHIP_LIST = [
     { name: "Carrier", length: 4 },
 ];
 
-const createShip = ({ id, name } = {}) => {
-    let ship = SHIP_LIST.find((item) => id === item.id || name === item.name);
+const createShip = ({ name } = {}) => {
+    let ship = SHIP_LIST.find((item) => name === item.name);
+
+    if (!ship) return false;
 
     return Object.assign(Object.create(setProto(ship)), {
-        name: ship ? ship.name : "Patrol Boat",
+        name: ship.name,
     });
 };
 
