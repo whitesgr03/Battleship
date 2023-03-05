@@ -652,7 +652,7 @@ main.loading {
     margin-bottom: 10px;
     width: 100px;
     height: 100px;
-    transition: all ease 0.1s;
+    transition: all 0.1s ease;
 }
 
 .battlePanel .control button:hover {
@@ -672,7 +672,7 @@ main.loading {
     max-height: 100%;
     filter: invert(22%) sepia(66%) saturate(3195%) hue-rotate(101deg)
         brightness(102%) contrast(106%);
-    transition: all ease 0.1s;
+    transition: all 0.1s ease;
 }
 
 .battlePanel .control button img:hover {
