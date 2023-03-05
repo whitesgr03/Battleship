@@ -428,6 +428,17 @@ main.loading {
     transform: rotate(90deg) scaleY(1);
 }
 
+/* ----- battlePanel ----- */
+
+.battlePanel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .battlefield {
     background-color: transparent;
     transform: rotate(45deg) skew(-10deg, -10deg);
