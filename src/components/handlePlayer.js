@@ -1,6 +1,4 @@
-import { createGameBoard } from "./handleGameBoard";
-
-const createPlayer = (name) => {
+const createPlayer = (name, board) => {
     return Object.assign(Object.create(setProto()), {
         name,
         board: createGameBoard(),
