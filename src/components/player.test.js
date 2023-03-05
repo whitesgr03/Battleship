@@ -1,5 +1,6 @@
 import { createPlayer } from "./handlePlayer";
-import { SHIP_LIST } from "./handleShip";
+import { createGameBoard } from "./handleGameBoard";
+import { createShip } from "./handleShip";
 
 describe("player()", () => {
     test("Return objects should include name, board", () => {
