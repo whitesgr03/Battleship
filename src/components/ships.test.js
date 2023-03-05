@@ -145,18 +145,24 @@ describe("getRotate()", () => {
         expect(actual).toEqual(expected);
     });
 });
+describe("setCenterPos()", () => {
+    test("should add CenterPos", () => {
         const ship = createShip({ name: "Patrol Boat" });
 
-        const actual = ship.getLength();
-        const expected = 2;
+        const actual = ship.setCenterPos([5, 5]);
+        const expected = [5, 5];
 
         expect(actual).toEqual(expected);
     });
-    test("should get 'Carrier' length", () => {
-        const ship = createShip({ name: "Carrier" });
+});
+describe("getCenterPos()", () => {
+    test("should get CenterPos", () => {
+        const ship = createShip({ name: "Patrol Boat" });
 
-        const actual = ship.getLength();
-        const expected = 4;
+        ship.setCenterPos([8, 8]);
+
+        const actual = ship.getCenterPos();
+        const expected = [8, 8];
 
         expect(actual).toEqual(expected);
     });
