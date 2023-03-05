@@ -5,72 +5,48 @@ const createGameBoard = ({ size } = 10) => {
 const setProto = (size) => {
     const ships = [];
 
-    const isOutsideBoard = ([x, y]) => {
-        return x < 0 || y < 0 || x >= size || y >= size;
-    };
+    const getAdjacentPos = (pos) => {
+        const adjacentPos = [];
 
-    const hasShip = ([x, y]) => {
-        for (let i = 0; i < ships.length; i++) {
-            const shipPos = ships[i].getPos();
+        const posX = pos.map(([x]) => x);
+        const posY = pos.map(([, y]) => y);
 
-            if (shipPos.find((pos) => pos[0] === x && pos[1] === y)) {
-                return ships[i];
+        const isRotate = posX.every((x) => x === posX[0]);
+
+        if (isRotate) {
+            const [maxPosY, minPosY] = [Math.max(...posY), Math.min(...posY)];
+
+            for (let y of posY) {
+                adjacentPos.push([posX[0] + 1, y]);
+                adjacentPos.push([posX[0] - 1, y]);
             }
+
+            adjacentPos.push([posX[0] + 1, maxPosY + 1]);
+            adjacentPos.push([posX[0], maxPosY + 1]);
+            adjacentPos.push([posX[0] - 1, maxPosY + 1]);
+
+            adjacentPos.push([posX[0] + 1, minPosY - 1]);
+            adjacentPos.push([posX[0], minPosY - 1]);
+            adjacentPos.push([posX[0] - 1, minPosY - 1]);
+        } else {
+            const [maxPosX, minPosX] = [Math.max(...posX), Math.min(...posX)];
+
+            for (let x of posX) {
+                adjacentPos.push([x, posY[0] + 1]);
+                adjacentPos.push([x, posY[0] - 1]);
+            }
+
+            adjacentPos.push([maxPosX + 1, posY[0] + 1]);
+            adjacentPos.push([maxPosX + 1, posY[0]]);
+            adjacentPos.push([maxPosX + 1, posY[0] - 1]);
+
+            adjacentPos.push([minPosX - 1, posY[0] + 1]);
+            adjacentPos.push([minPosX - 1, posY[0]]);
+            adjacentPos.push([minPosX - 1, posY[0] - 1]);
         }
-        return false;
+
+        return adjacentPos;
     };
-    const getShipPos = (ship, position, axis, direction) => {
-        const pos = [];
-        for (let i = 0; i < ship.getLength(); i++) {
-            let [x, y] = position;
-
-            if (axis === "horizontal") {
-                if (direction === "left") {
-                    x += i;
-                }
-                if (direction === "right") {
-                    x -= i;
-                }
-            }
-            if (axis === "vertical") {
-                if (direction === "up") {
-                    y -= i;
-                }
-                if (direction === "down") {
-                    y += i;
-                }
-            }
-
-            pos.push([x, y]);
-        }
-        return pos;
-    };
-
-    return {
-        setShip({ id, name, position, axis, direction }) {
-            const ship = createShip({ id, name });
-
-            const shipPos = getShipPos(ship, position, axis, direction);
-
-            for (let pos of shipPos) {
-                if (isOutsideBoard(pos)) {
-                    return {
-                        success: false,
-                        message: "Ship is out of range of the board",
-                    };
-                }
-
-                if (hasShip(pos)) {
-                    return {
-                        success: false,
-                        message: "Ship overlaps with other ships",
-                    };
-                }
-
-                ship.setPos(pos);
-            }
-
-            ships.push(ship);
 
             return {
                 success: true,
