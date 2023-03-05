@@ -1,5 +1,5 @@
 import { createGameBoard } from "./handleGameBoard";
-import { SHIP_LIST } from "./handleShip";
+import { createShip } from "./handleShip";
 
 describe("setShip() should input ship, position, direction props", () => {
     test("Set the 'Patrol Boat' to pos (3, 3) vertically down", () => {
