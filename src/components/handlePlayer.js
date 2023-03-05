@@ -1,7 +1,7 @@
 const createPlayer = (name, board) => {
     return Object.assign(Object.create(setProto()), {
         name,
-        board: createGameBoard(),
+        board,
     });
 };
 
