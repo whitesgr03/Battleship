@@ -48,19 +48,17 @@ const setProto = (size) => {
         return adjacentPos;
     };
 
-            return {
-                success: true,
-                name: ship.name,
-                position: ship.getPos(),
-            };
+    return {
+        addShip(ship) {
+            ships = [...ships, ship];
+            return ships;
         },
-        receiveAttack(position) {
-            if (isOutsideBoard(position)) {
-                return {
-                    success: false,
-                    state: "out",
-                    message: "attack is out of range of the board",
-                };
+        getShip(name) {
+            return ships.find((ship) => ship.name === name) ?? false;
+        },
+        getAllShips() {
+            return [...ships];
+        },
             }
 
             const ship = hasShip(position);
