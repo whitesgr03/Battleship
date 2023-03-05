@@ -635,7 +635,6 @@ main.loading {
 .battlePanel .control li {
     color: var(--main-light);
     display: flex;
-    padding-left: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
