@@ -457,12 +457,12 @@ main.loading {
     position: relative;
 }
 
-.field .name {
+.field .trapezium {
     padding: var(--trapezium-height) var(--trapezium-width);
     position: relative;
 }
 
-.field .name::before {
+.field .trapezium::before {
     content: "";
     position: absolute;
     top: 0;
@@ -478,11 +478,11 @@ main.loading {
     border-left-width: calc(var(--trapezium-width) / 2);
     border-right-width: calc(var(--trapezium-width) / 2);
 }
-.field:nth-of-type(1) .name::before {
+.field:nth-of-type(1) .trapezium::before {
     border-bottom-color: var(--main-dark);
 }
-.field:nth-of-type(2) .name::before {
-    border-bottom-color: red;
+.field:nth-of-type(2) .trapezium::before {
+    border-bottom-color: var(--enemy-name-color);
 }
 
 .field .name span {
