@@ -35,8 +35,21 @@ const setProto = (ship) => {
         getPos() {
             return [...pos];
         },
-        getLength() {
-            return length;
+        getHealthyPercent() {
+            return (100 / length) * hits;
+        },
+        setRotate(value) {
+            return (rotate = value);
+        },
+        getRotate() {
+            return rotate;
+        },
+        setCenterPos(position) {
+            centerPos = position;
+            return [...centerPos];
+        },
+        getCenterPos() {
+            return [...centerPos];
         },
     };
 };
