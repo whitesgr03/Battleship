@@ -368,66 +368,64 @@ main.loading {
     border-top: 1px solid var(--ship-silhouette);
 }
 
-}
-
-.strategyPanel .control {
+.panel .control {
     flex: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 60px 0;
-    row-gap: 50px;
+    justify-content: space-around;
 }
 
-.strategyPanel .control li {
+.panel .control li {
     color: var(--main-light);
-    display: flex;
-    padding-left: 50px;
-}
-
-.strategyPanel .control li > div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.strategyPanel .control li:nth-child(2) {
-    margin-bottom: auto;
+.panel .control li:first-of-type {
+    row-gap: 20px;
 }
 
-.strategyPanel .control button {
+.panel .control li div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel .control button {
     cursor: pointer;
-    border: 3px solid #008000;
+    border: 3px solid var(--ship-silhouette);
     margin-bottom: 10px;
     width: 100px;
     height: 100px;
-    transition: all ease 0.1s;
+    transition: all 0.1s ease, opacity 0.3s ease;
 }
 
-.strategyPanel .control button:first-of-type.down {
-    transform: rotate(90deg) scaleY(1);
-}
-.strategyPanel .control button:first-of-type.down:hover {
-    transform: rotate(90deg) scaleY(1) scale(1.1);
-}
-.strategyPanel .control button:first-of-type.down:active {
-    transform: rotate(90deg) scaleY(1) scale(1);
-}
-
-.strategyPanel .control button:hover {
+.panel .control button:hover {
     border-color: var(--ship-silhouette-hover);
     transform: scale(1.1);
 }
 
-.strategyPanel .control button:active {
+.panel .control button:active {
     transform: scale(1);
 }
 
-.strategyPanel .control button img {
+.panel .control button img {
     max-width: 100%;
-    max-height: 100%;
+    height: auto;
     filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
         brightness(124%) contrast(102%);
+}
+
+.panel .control .rotateBtn:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.panel .control img.rotateDown {
+    transform: rotate(90deg) scaleY(1);
 }
 
 .battlefield {
