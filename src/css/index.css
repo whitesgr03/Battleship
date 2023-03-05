@@ -19,6 +19,10 @@
         "Segoe UI Symbol";
 }
 
+[hidden] {
+    display: none !important;
+}
+
 p,
 h2,
 h1 {
