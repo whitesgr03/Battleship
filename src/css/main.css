@@ -115,35 +115,69 @@ main.loading {
     margin-bottom: 20px;
 }
 
-.strategyPanel .ships li {
+.panel {
     width: 100%;
+    padding: 0 50px;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    row-gap: 10px;
 }
 
-.strategyPanel .ships li > div {
-    position: relative;
+.panel .silhouette {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
-.strategyPanel .ships li img {
-    min-width: 100%;
-    height: auto;
+.panel .silhouette img {
+    cursor: pointer;
+    filter: invert(22%) sepia(66%) saturate(3195%) hue-rotate(101deg)
+        brightness(102%) contrast(106%);
+    transition: filter 0.3s ease;
 }
 
-.strategyPanel .ships li > div img:nth-child(1) {
-    pointer-events: none;
+.panel .silhouette:hover img {
     filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
         brightness(124%) contrast(102%);
 }
 
-.strategyPanel .ships li > div img:nth-child(2) {
+.panel .silhouette.selected img {
+    filter: invert(62%) sepia(66%) saturate(4015%) hue-rotate(77deg)
+        brightness(124%) contrast(102%);
+}
+
+.panel .silhouette img.rotateDown {
+    transform: rotate(90deg) scaleY(-1);
+}
+
+.panel .message {
+    pointer-events: none;
     position: absolute;
-    top: 50%;
+    bottom: 100%;
     left: 50%;
-    transform: translate(-50%, -54%);
+    transform: translateX(-50%);
+    width: 400%;
+    z-index: 1;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+    text-shadow: 0px 0px 5px var(--main-dark), 0px 0px 5px var(--main-dark),
+        0px 0px 5px var(--main-dark), 0px 0px 5px var(--main-dark),
+        0px 0px 5px var(--main-dark), 0px 0px 5px var(--main-dark),
+        0px 0px 5px var(--main-dark), 0px 0px 5px var(--main-dark);
+}
+.panel .ships {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    padding-bottom: 60px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
     filter: invert(22%) sepia(66%) saturate(3195%) hue-rotate(101deg)
         brightness(102%) contrast(106%);
     transition: filter ease 0.3s;
