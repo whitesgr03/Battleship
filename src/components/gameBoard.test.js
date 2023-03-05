@@ -70,26 +70,26 @@ describe("getAllShips() should input name", () => {
     });
 });
 
-        const board = createGameBoard();
+describe("isOutBounds() should input position", () => {
+    test("input position is within bounds ", () => {
+        const myBoard = createGameBoard({ size: 10 });
 
-        board.setShip({
-            id: shipId,
-            position: [3, 4],
-            axis: "vertical",
-            direction: "up",
-        });
+        const position = [[3, 3]];
 
-        const actual = board.setShip({
-            id: shipId2,
-            position: [2, 4],
-            axis: "horizontal",
-            direction: "left",
-        });
+        const actual = myBoard.isOutBounds(position);
 
-        const expected = {
-            success: false,
-            message: "Ship overlaps with other ships",
-        };
+        const expected = false;
+
+        expect(actual).toEqual(expected);
+    });
+    test("input position is out of bounds ", () => {
+        const myBoard = createGameBoard({ size: 10 });
+
+        const position = [[11, 0]];
+
+        const actual = myBoard.isOutBounds(position);
+
+        const expected = true;
 
         expect(actual).toEqual(expected);
     });
