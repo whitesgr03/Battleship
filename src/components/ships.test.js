@@ -33,9 +33,7 @@ describe("createShip() Return objects should include name, length, hits sunk", (
 });
 describe("increaseHit()", () => {
     test("should increase hit", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-
-        const ship = createShip({ id: shipId });
+        const ship = createShip({ name: "Patrol Boat" });
 
         const actual = ship.increaseHit();
         const expected = 1;
@@ -43,9 +41,7 @@ describe("increaseHit()", () => {
         expect(actual).toEqual(expected);
     });
     test("should add two hits", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-
-        const ship = createShip({ id: shipId });
+        const ship = createShip({ name: "Patrol Boat" });
 
         ship.increaseHit();
 
@@ -55,7 +51,6 @@ describe("increaseHit()", () => {
         expect(actual).toEqual(expected);
     });
 });
-
 describe("isSunk()", () => {
     test("should check if length and hit are equal (1)", () => {
         const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
