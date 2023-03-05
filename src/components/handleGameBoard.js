@@ -84,21 +84,24 @@ const setProto = (size) => {
 
             return false;
         },
+        receiveAttack(attackedPos) {
+            const [x, y] = attackedPos;
 
-            if (!ship)
-                return {
-                    success: true,
-                    state: "missed",
-                    message: "attack misses.",
-                };
+            const ship =
+                ships.find((ship) =>
+                    ship
+                        .getPos()
+                        .find(
+                            ([shipPosX, shipPosY]) =>
+                                shipPosX === x && shipPosY === y
+                        )
+                ) || false;
 
-            ship.increaseHit();
+            if (ship) {
+                ship.increaseHit();
+            }
 
-            return {
-                success: true,
-                state: "hit",
-                message: "hit a ship.",
-            };
+            return ship;
         },
         isAllShipsSunk() {
             return ships.every((ship) => ship.isSunk() === true);
