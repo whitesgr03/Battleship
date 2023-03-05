@@ -600,7 +600,6 @@ main.loading {
     bottom: 0;
     border-top: 1px solid var(--ship-silhouette);
     border-right: 1px solid var(--ship-silhouette);
-    --damaged-percent: 50%;
 }
 
 .fleetState li {
