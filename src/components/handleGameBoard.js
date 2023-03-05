@@ -3,7 +3,7 @@ const createGameBoard = ({ size } = 10) => {
 };
 
 const setProto = (size) => {
-    const ships = [];
+    let ships = [];
 
     const getAdjacentPos = (pos) => {
         const adjacentPos = [];
