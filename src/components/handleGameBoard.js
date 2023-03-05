@@ -104,7 +104,7 @@ const setProto = (size) => {
             return ship;
         },
         isAllShipsSunk() {
-            return ships.every((ship) => ship.isSunk() === true);
+            return ships.every((ship) => ship.isSunk());
         },
     };
 };
