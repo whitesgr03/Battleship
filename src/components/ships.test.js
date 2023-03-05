@@ -2,9 +2,7 @@ import { createShip, SHIP_LIST } from "./handleShip";
 
 describe("createShip() Return objects should include name, length, hits sunk", () => {
     test("Input id create 'Patrol Boat'", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
-
-        const actual = createShip({ id: shipId });
+        const actual = createShip({ name: "Patrol Boat" });
 
         const expected = {
             name: "Patrol Boat",
@@ -21,34 +19,18 @@ describe("createShip() Return objects should include name, length, hits sunk", (
 
         expect(actual).toEqual(expected);
     });
-    test("No input param", () => {
-        const actual = createShip();
-        const expected = {
-            name: "Patrol Boat",
-        };
 
-        expect(actual).toEqual(expected);
-    });
     test("Input incorrect param", () => {
-        const shipId = SHIP_LIST.find((item) => "Boat" === item.id);
-        const shipId2 = SHIP_LIST.find((item) => 6 === item.id);
-        const shipId3 = SHIP_LIST.find((item) => -1 === item.id);
+        const actual = createShip();
 
-        const actual = createShip(shipId);
+        const expected = false;
 
-        const expected = {
-            name: "Patrol Boat",
-        };
-
-        const second = createShip(shipId2);
-        const third = createShip(shipId3);
+        const second = createShip("Boat");
 
         expect(actual).toEqual(expected);
         expect(second).toEqual(expected);
-        expect(third).toEqual(expected);
     });
 });
-
 describe("increaseHit()", () => {
     test("should increase hit", () => {
         const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
