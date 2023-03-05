@@ -95,33 +95,56 @@ describe("isOutBounds() should input position", () => {
     });
 });
 
-describe("receiveAttack() should input a position", () => {
-    test("The attack hit a ship", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
+describe("isOverlapShip() should input position and itself name", () => {
+    test("input position is not overlapping", () => {
+        const myBoard = createGameBoard({ size: 10 });
 
-        const myBoard = createGameBoard();
+        const ship = createShip({ name: "Patrol Boat" });
 
-        myBoard.setShip({
-            id: shipId,
-            position: [3, 3],
-            axis: "vertical",
-            direction: "down",
-        });
+        ship.setPos([
+            [3, 3],
+            [2, 3],
+        ]);
 
-        const enemyAttackPos = [3, 4];
+        myBoard.addShip(ship);
 
-        const actual = myBoard.receiveAttack(enemyAttackPos);
+        const position = [
+            [3, 5],
+            [2, 5],
+            [4, 5],
+        ];
 
-        const expected = {
-            success: true,
-            state: "hit",
-            message: "hit a ship.",
-        };
+        const actual = myBoard.isOverlapShip(position);
+
+        const expected = false;
 
         expect(actual).toEqual(expected);
     });
-    test("The attack missed", () => {
-        const shipId = SHIP_LIST.find((item) => "Patrol Boat" === item.name).id;
+    test("input position is  overlapping", () => {
+        const myBoard = createGameBoard({ size: 10 });
+
+        const ship = createShip({ name: "Patrol Boat" });
+
+        ship.setPos([
+            [3, 3],
+            [2, 3],
+        ]);
+
+        myBoard.addShip(ship);
+
+        const position = [
+            [3, 3],
+            [2, 3],
+            [4, 3],
+        ];
+
+        const actual = myBoard.isOverlapShip(position);
+
+        const expected = true;
+
+        expect(actual).toEqual(expected);
+    });
+});
 
         const myBoard = createGameBoard();
 
