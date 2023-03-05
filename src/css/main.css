@@ -85,12 +85,7 @@ main.loading {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: var(--main-light);
-    /* display: none;  */
-    /* 按下 start 後啟動 */
 }
 
 .gameBoard > div:first-of-type {
