@@ -101,10 +101,10 @@ describe("isOverlapShip() should input position and itself name", () => {
 
         const ship = createShip({ name: "Patrol Boat" });
 
-        ship.setPos([
-            [3, 3],
-            [2, 3],
-        ]);
+        const shipPosition = [3, 3];
+        const shipRotate = false;
+
+        ship.setPos(shipPosition, shipRotate);
 
         myBoard.addShip(ship);
 
@@ -120,15 +120,15 @@ describe("isOverlapShip() should input position and itself name", () => {
 
         expect(actual).toEqual(expected);
     });
-    test("input position is  overlapping", () => {
+    test("input position is overlapping", () => {
         const myBoard = createGameBoard({ size: 10 });
 
         const ship = createShip({ name: "Patrol Boat" });
 
-        ship.setPos([
-            [3, 3],
-            [2, 3],
-        ]);
+        const shipPosition = [3, 3];
+        const shipRotate = false;
+
+        ship.setPos(shipPosition, shipRotate);
 
         myBoard.addShip(ship);
 
@@ -152,10 +152,10 @@ describe("receiveAttack()", () => {
 
         const ship = createShip({ name: "Patrol Boat" });
 
-        ship.setPos([
-            [3, 3],
-            [2, 3],
-        ]);
+        const shipPosition = [3, 3];
+        const shipRotate = false;
+
+        ship.setPos(shipPosition, shipRotate);
 
         myBoard.addShip(ship);
 
@@ -172,10 +172,10 @@ describe("receiveAttack()", () => {
 
         const ship = createShip({ name: "Patrol Boat" });
 
-        ship.setPos([
-            [3, 3],
-            [2, 3],
-        ]);
+        const shipPosition = [3, 3];
+        const shipRotate = false;
+
+        ship.setPos(shipPosition, shipRotate);
 
         myBoard.addShip(ship);
 
@@ -195,10 +195,10 @@ describe("isAllShipsSunk()", () => {
 
         const ship = createShip({ name: "Patrol Boat" });
 
-        ship.setPos([
-            [3, 3],
-            [2, 3],
-        ]);
+        const shipPosition = [3, 3];
+        const shipRotate = false;
+
+        ship.setPos(shipPosition, shipRotate);
 
         myBoard.addShip(ship);
 
