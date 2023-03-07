@@ -76,9 +76,14 @@ describe("isSunk()", () => {
 describe("setPos()", () => {
     test("should add position", () => {
         const ship = createShip({ name: "Patrol Boat" });
+        const position = [3, 3];
+        const shipRotate = false;
 
-        const actual = ship.setPos([3, 3]);
-        const expected = [3, 3];
+        const actual = ship.setPos(position, shipRotate);
+        const expected = [
+            [3, 3],
+            [2, 3],
+        ];
 
         expect(actual).toEqual(expected);
     });
