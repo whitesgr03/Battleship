@@ -115,10 +115,6 @@ const battlePanel = (() => {
                 ship.setRotate(isShipRotate);
                 ship.setCenterPos(position);
             }
-
-            for (let ship of secondPlayer.board.getAllShips()) {
-                console.log(...ship.getPos());
-            }
         },
         getComputerPos() {
             return [randomInteger(1, 10), randomInteger(1, 10)];
