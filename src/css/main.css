@@ -799,7 +799,7 @@ main.loading {
     transform: scale(0.9);
 }
 
-.result .closeBtn {
+.result .returnBtn {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -814,8 +814,8 @@ main.loading {
     align-items: center;
 }
 
-.result .closeBtn::before,
-.result .closeBtn::after {
+.result .returnBtn::before,
+.result .returnBtn::after {
     content: "";
     position: absolute;
 
@@ -826,21 +826,22 @@ main.loading {
     background: var(--main-light);
 }
 
-.closeBtn:hover::before,
-.closeBtn:hover::after {
+.returnBtn:hover::before,
+.returnBtn:hover::after {
     background: var(--button-bgc-hover);
     border: 5px solid var(--main-dark);
 }
 
-.result .closeBtn::before {
+.result .returnBtn::before {
     transform: rotate(45deg);
 }
 
-.result .closeBtn::after {
+.result .returnBtn::after {
     transform: rotate(-45deg);
 }
 
-.result .closeBtn div {
+.result .returnBtn div {
+    pointer-events: none;
     position: absolute;
     width: 8px;
     height: 50%;
@@ -849,6 +850,6 @@ main.loading {
     z-index: 1;
 }
 
-.result .closeBtn:hover div {
+.result .returnBtn:hover div {
     background: var(--button-bgc-hover);
 }
