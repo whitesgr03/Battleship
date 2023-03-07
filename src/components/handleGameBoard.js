@@ -1,4 +1,4 @@
-const createGameBoard = ({ size } = 10) => {
+const createGameBoard = ({ size = 10 } = {}) => {
     return Object.assign(Object.create(setProto(size)), { size });
 };
 
