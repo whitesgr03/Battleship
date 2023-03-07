@@ -842,6 +842,17 @@ const createBattleShip = () => {
     alert.classList.add("show");
     alertPanel.classList.add("blur");
   }
+  function preloadImage() {
+    const shipList = ["carrier", "battleship", "patrol boat"];
+    for (let ship of shipList) {
+      const img = document.createElement("img");
+      img.src = strategyPanel.shipsImage[ship];
+      img.style.cssText = "opacity: 0";
+      mainElement.append(img);
+      img.remove();
+    }
+  }
+  preloadImage();
 };
 createBattleShip();
 
@@ -990,4 +1001,4 @@ module.exports = __webpack_require__.p + "img/7d07dc5b5e62f624d9a4.png";
 /******/ var __webpack_exports__ = (__webpack_exec__(587));
 /******/ }
 ]);
-//# sourceMappingURL=index.100925db7b61bade3488.js.map
+//# sourceMappingURL=index.71d2847e8faf8a1163a3.js.map
