@@ -1,2 +1,2 @@
 # Battleship
-Battleship is a strategy type guessing game for two players.
+Battleship is a strategy guessing game against the computer.
