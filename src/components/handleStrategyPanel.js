@@ -68,7 +68,7 @@ const strategyPanel = (() => {
                 const ship = firstPlayer.board.getShip(el.dataset.name);
                 const message = el.querySelector("span");
 
-                if (!ship || !el.closest(".container")) {
+                if (!ship || ship.getPos().length === 0) {
                     message.textContent =
                         "This ship has not set a position yet";
                     message.className = "message";
