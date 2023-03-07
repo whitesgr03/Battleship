@@ -91,16 +91,15 @@ describe("setPos()", () => {
 describe("getPos()", () => {
     test("should get position", () => {
         const ship = createShip({ name: "Patrol Boat" });
+        const position = [3, 3];
+        const shipRotate = false;
 
-        ship.setPos([
-            [3, 3],
-            [3, 4],
-        ]);
+        ship.setPos(position, shipRotate);
 
         const actual = ship.getPos();
         const expected = [
             [3, 3],
-            [3, 4],
+            [2, 3],
         ];
 
         expect(actual).toEqual(expected);
