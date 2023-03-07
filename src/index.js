@@ -415,17 +415,6 @@ const createBattleShip = () => {
                             "transitionend",
                             () => {
                                 ship.remove();
-
-                                if (attackedPlayer.board.isAllShipsSunk()) {
-                                    gameController.toggleGameState();
-
-                                    attackedPlayerField.classList.remove(
-                                        "activeHover"
-                                    );
-
-                                    showAlertPanel(attacker.name);
-                                    return;
-                                }
                             },
                             {
                                 once: true,
@@ -448,6 +437,15 @@ const createBattleShip = () => {
             }
         } else {
             grid.classList.add("missed");
+        }
+
+        if (attackedPlayer.board.isAllShipsSunk()) {
+            gameController.toggleGameState();
+
+            attackedPlayerField.classList.remove("activeHover");
+
+            showAlertPanel(attacker.name);
+            return;
         }
 
         attacker.addAttackedPos([x, y]);
