@@ -24,14 +24,15 @@ const createBattleShip = () => {
 
         mainElement.classList.add("loading");
 
-        const menuElement = mainElement.querySelector(".menu");
+        const startScreenElement = mainElement.querySelector(".startScreen");
         const gameBoardELement = mainElement.querySelector(".gameBoard");
 
         const firstPlayerName =
-            menuElement.querySelector(".firstPlayerName")?.textContent ?? "You";
+            startScreenElement.querySelector(".firstPlayerName")?.textContent ??
+            "You";
         const secondPlayerName =
-            menuElement.querySelector(".secondPlayerName")?.textContent ??
-            "Computer";
+            startScreenElement.querySelector(".secondPlayerName")
+                ?.textContent ?? "Computer";
 
         const firstPlayer = createPlayer(firstPlayerName, createGameBoard());
         const secondPlayer = createPlayer(secondPlayerName, createGameBoard());
@@ -46,7 +47,7 @@ const createBattleShip = () => {
             function showStrategyPanel(e) {
                 if (e.target !== mainElement) return;
 
-                menuElement.hidden = true;
+                startScreenElement.hidden = true;
                 gameBoardELement.hidden = false;
 
                 const strategyPanelElement =
@@ -555,18 +556,20 @@ const createBattleShip = () => {
                                 function showMenu(e) {
                                     if (e.target !== mainElement) return;
 
-                                    const menu =
-                                        mainElement.querySelector(".menu");
-                                    const gameBoard =
+                                    const startScreenElement =
+                                        mainElement.querySelector(
+                                            ".startScreen"
+                                        );
+                                    const gameBoardElement =
                                         mainElement.querySelector(".gameBoard");
 
                                     const strategyPanelElement =
-                                        gameBoard.querySelector(
+                                        gameBoardElement.querySelector(
                                             ".strategyPanel"
                                         );
 
-                                    menu.hidden = false;
-                                    gameBoard.hidden = true;
+                                    startScreenElement.hidden = false;
+                                    gameBoardElement.hidden = true;
 
                                     mainElement.addEventListener(
                                         "pointerdown",
