@@ -237,7 +237,6 @@ const createBattleShip = () => {
 
             stopDrag();
         };
-
         const stopDrag = () => {
             panelElement.removeEventListener("pointermove", dragShip);
             silhouetteElement.removeEventListener("pointerup", placeShip);
@@ -620,6 +619,19 @@ const createBattleShip = () => {
         alert.classList.add("show");
         alertPanel.classList.add("blur");
     }
+
+    function preloadImage() {
+        const shipList = ["carrier", "battleship", "patrol boat"];
+        for (let ship of shipList) {
+            const img = document.createElement("img");
+
+            img.src = strategyPanel.shipsImage[ship];
+            img.style.cssText = "opacity: 0";
+            mainElement.append(img);
+            img.remove();
+        }
+    }
+    preloadImage();
 };
 
 createBattleShip();
