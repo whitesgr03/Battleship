@@ -53,7 +53,6 @@ const battlePanel = (() => {
                 battlePanelElement.querySelectorAll(`.field[data-player]`);
 
             for (let el of field) {
-                console.log(el.dataset.player, attacker.name);
                 if (el.dataset.owner !== attacker.name) {
                     el.classList.add("activeHover");
                 }
