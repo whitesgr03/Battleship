@@ -447,16 +447,13 @@ const createBattleShip = () => {
                         }
 
                         ship.classList.remove("shake");
+                        attackerField.style.pointerEvents = "auto";
                     },
                     { once: true }
                 );
 
                 ship.classList.add("shake");
-
-                shipState.style.setProperty(
-                    "--damaged-percent",
-                    `${hitShip.getHealthyPercent()}%`
-                );
+                attackerField.style.pointerEvents = "none";
             }
         } else {
             grid.classList.add("missed");
