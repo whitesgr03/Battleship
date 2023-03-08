@@ -209,12 +209,19 @@ const handleGameBoard_setProto = size => {
 
 ;// CONCATENATED MODULE: ./src/components/handlePlayer.js
 const createPlayer = (name, board) => {
-  return Object.assign(Object.create(handlePlayer_setProto()), {
+  const obj = {
     name,
     board
-  });
+  };
+  if (name === "Computer") {
+    obj.previousHitPos = null;
+    obj.possiblePos = [];
+    const proto = Object.assign(origin(), computer());
+    return Object.assign(Object.create(proto), obj);
+  }
+  return Object.assign(Object.create(origin()), obj);
 };
-const handlePlayer_setProto = () => {
+const origin = () => {
   let attackedPos = [];
   return {
     attack(target, position) {
@@ -229,6 +236,79 @@ const handlePlayer_setProto = () => {
         let [x, y] = _ref;
         return position[0] === x && position[1] === y;
       });
+    }
+  };
+};
+const computer = () => {
+  let possiblePos = [];
+  let previousHitPos = null;
+  return {
+    setPreviousHitPos(position) {
+      previousHitPos = position;
+      return this.getPreviousHitPos();
+    },
+    getPreviousHitPos() {
+      if (!previousHitPos) return false;
+      return [previousHitPos[0], previousHitPos[1]];
+    },
+    setPossiblePos(position) {
+      possiblePos = position;
+      return [...possiblePos];
+    },
+    getPossiblePos() {
+      return [...possiblePos];
+    },
+    calcPossiblePos(position) {
+      const array = [];
+      const [x, y] = position;
+      if (x + 1 <= 10) {
+        array.push([x + 1, y]);
+      }
+      if (x - 1 >= 1) {
+        array.push([x - 1, y]);
+      }
+      if (y + 1 <= 10) {
+        array.push([x, y + 1]);
+      }
+      if (y - 1 >= 1) {
+        array.push([x, y - 1]);
+      }
+      return array;
+    },
+    filterPossiblePos(current) {
+      const previous = previousHitPos;
+      const possible = [...possiblePos];
+      let arr = [];
+      if (previous[0] === current[0]) {
+        arr = possible.filter(_ref2 => {
+          let [x] = _ref2;
+          return x === previous[0];
+        });
+        if (current[1] > previous[1]) {
+          if (current[1] + 1 <= 10) {
+            arr.push([current[0], current[1] + 1]);
+          }
+        } else {
+          if (current[1] - 1 >= 1) {
+            arr.push([current[0], current[1] - 1]);
+          }
+        }
+      } else {
+        arr = possible.filter(_ref3 => {
+          let [, y] = _ref3;
+          return y === previous[1];
+        });
+        if (current[0] > previous[0]) {
+          if (current[0] + 1 <= 10) {
+            arr.push([current[0] + 1, current[1]]);
+          }
+        } else {
+          if (current[0] - 1 >= 1) {
+            arr.push([current[0] - 1, current[1]]);
+          }
+        }
+      }
+      return arr;
     }
   };
 };
@@ -303,6 +383,9 @@ const common = (() => {
         obj[keys] = url;
       }
       return obj;
+    },
+    randomInteger(min, max) {
+      return Math.floor(min + Math.random() * (max - min + 1));
     }
   };
 })();
@@ -380,9 +463,6 @@ const battlePanel = (() => {
   const battlePanelElement = document.querySelector(".battlePanel");
   const shipsSource = __webpack_require__(314);
   const shipsImg = common.load(shipsSource);
-  const randomInteger = (min, max) => {
-    return Math.floor(min + Math.random() * (max - min + 1));
-  };
   return {
     resetContainer() {
       const fields = battlePanelElement.querySelectorAll(".container");
@@ -436,7 +516,7 @@ const battlePanel = (() => {
       const secondPlayer = gameController.getSecondPlayer();
       const list = [...SHIP_LIST];
       while (list.length !== 0) {
-        const shipIndex = randomInteger(0, list - 1);
+        const shipIndex = common.randomInteger(0, list.length - 1);
         const {
           name
         } = list.splice(shipIndex, 1)[0];
@@ -451,21 +531,19 @@ const battlePanel = (() => {
         let shipPos = null;
         let position = null;
         do {
-          position = this.getComputerPos();
-          isShipRotate = randomInteger(0, 1) === 0 ? true : false;
+          position = [common.randomInteger(1, 10), common.randomInteger(1, 10)];
+          isShipRotate = common.randomInteger(0, 1) === 0 ? true : false;
           shipPos = ship.setPos(position, isShipRotate);
         } while (secondPlayer.board.isOutBounds(shipPos) || secondPlayer.board.isOverlapShip(shipPos, name));
         ship.setRotate(isShipRotate);
         ship.setCenterPos(position);
       }
-    },
-    getComputerPos() {
-      return [randomInteger(1, 10), randomInteger(1, 10)];
     }
   };
 })();
 
 ;// CONCATENATED MODULE: ./src/index.js
+
 
 
 
@@ -727,6 +805,7 @@ const createBattleShip = () => {
       if (attacker.name === "Computer") {
         const ship = battlePanelElement.querySelector(`.ship[data-name="${hitShip.name}"]`);
         const shipState = battlePanelElement.querySelector(`.fleetState img[data-name="${hitShip.name}"]`);
+        shipState.style.setProperty("--damaged-percent", `${hitShip.getHealthyPercent()}%`);
         ship.addEventListener("animationend", () => {
           ship.addEventListener("transitionend", () => {
             ship.remove();
@@ -735,13 +814,26 @@ const createBattleShip = () => {
           });
           if (hitShip.isSunk()) {
             ship.classList.add("destroyed");
+            attacker.setPreviousHitPos(null);
+            attacker.setPossiblePos([]);
+          } else {
+            const hasPreviousPos = attacker.getPreviousHitPos();
+            if (hasPreviousPos) {
+              const sameAxisPos = attacker.filterPossiblePos([x, y]);
+              attacker.setPossiblePos(sameAxisPos);
+            } else {
+              const possiblePos = attacker.calcPossiblePos([x, y]);
+              attacker.setPossiblePos(possiblePos);
+              attacker.setPreviousHitPos([x, y]);
+            }
           }
           ship.classList.remove("shake");
+          attackerField.style.pointerEvents = "auto";
         }, {
           once: true
         });
         ship.classList.add("shake");
-        shipState.style.setProperty("--damaged-percent", `${hitShip.getHealthyPercent()}%`);
+        attackerField.style.pointerEvents = "none";
       }
     } else {
       grid.classList.add("missed");
@@ -759,7 +851,13 @@ const createBattleShip = () => {
     if (newAttacker.name === "Computer") {
       let position = null;
       do {
-        position = battlePanel.getComputerPos();
+        const possiblePos = newAttacker.getPossiblePos();
+        if (possiblePos.length > 0) {
+          const index = common.randomInteger(0, possiblePos.length - 1);
+          position = possiblePos.splice(index, 1)[0];
+        } else {
+          position = [common.randomInteger(1, 10), common.randomInteger(1, 10)];
+        }
       } while (newAttacker.isDuplicateAttack(position));
       sendAttack(position);
     }
@@ -1001,4 +1099,4 @@ module.exports = __webpack_require__.p + "img/7d07dc5b5e62f624d9a4.png";
 /******/ var __webpack_exports__ = (__webpack_exec__(587));
 /******/ }
 ]);
-//# sourceMappingURL=index.71d2847e8faf8a1163a3.js.map
+//# sourceMappingURL=index.5f2ef3f0e953de4208ba.js.map
