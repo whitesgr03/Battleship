@@ -409,6 +409,11 @@ const createBattleShip = () => {
                     `.fleetState img[data-name="${hitShip.name}"]`
                 );
 
+                shipState.style.setProperty(
+                    "--damaged-percent",
+                    `${hitShip.getHealthyPercent()}%`
+                );
+
                 ship.addEventListener(
                     "animationend",
                     () => {
