@@ -9,6 +9,7 @@ import { createPlayer } from "./components/handlePlayer";
 import { strategyPanel } from "./components/handleStrategyPanel";
 import { battlePanel } from "./components/handleBattlePanel";
 import { gameController } from "./components/handleGameController";
+import { common } from "./components/handleCommon";
 
 const createBattleShip = () => {
     // catch DOM
