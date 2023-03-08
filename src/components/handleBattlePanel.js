@@ -82,7 +82,7 @@ const battlePanel = (() => {
             const list = [...SHIP_LIST];
 
             while (list.length !== 0) {
-                const shipIndex = randomInteger(0, list - 1);
+                const shipIndex = common.randomInteger(0, list.length - 1);
 
                 const { name } = list.splice(shipIndex, 1)[0];
 
@@ -98,9 +98,13 @@ const battlePanel = (() => {
                 let position = null;
 
                 do {
-                    position = this.getComputerPos();
+                    position = [
+                        common.randomInteger(1, 10),
+                        common.randomInteger(1, 10),
+                    ];
 
-                    isShipRotate = randomInteger(0, 1) === 0 ? true : false;
+                    isShipRotate =
+                        common.randomInteger(0, 1) === 0 ? true : false;
 
                     shipPos = ship.setPos(position, isShipRotate);
                 } while (
