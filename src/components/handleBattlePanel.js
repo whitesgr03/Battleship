@@ -112,9 +112,6 @@ const battlePanel = (() => {
                 ship.setCenterPos(position);
             }
         },
-        getComputerPos() {
-            return [randomInteger(1, 10), randomInteger(1, 10)];
-        },
     };
 })();
 
