@@ -12,9 +12,6 @@ const battlePanel = (() => {
     );
     const shipsImg = common.load(shipsSource);
 
-    const randomInteger = (min, max) => {
-        return Math.floor(min + Math.random() * (max - min + 1));
-    };
     return {
         resetContainer() {
             const fields = battlePanelElement.querySelectorAll(".container");
