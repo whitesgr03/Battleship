@@ -36,6 +36,9 @@ const common = (() => {
             }
             return obj;
         },
+        randomInteger(min, max) {
+            return Math.floor(min + Math.random() * (max - min + 1));
+        },
     };
 })();
 
