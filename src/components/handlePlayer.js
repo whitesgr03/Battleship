@@ -12,10 +12,10 @@ const createPlayer = (name, board) => {
         return Object.assign(Object.create(proto), obj);
     }
 
-    return Object.assign(Object.create(setProto()), obj);
+    return Object.assign(Object.create(origin()), obj);
 };
 
-const setProto = () => {
+const origin = () => {
     let attackedPos = [];
 
     return {
