@@ -5,8 +5,11 @@ const createPlayer = (name, board) => {
     };
 
     if (name === "Computer") {
-        obj.possiblePos = [];
         obj.previousHitPos = null;
+        obj.possiblePos = [];
+
+        const proto = Object.assign(origin(), computer());
+        return Object.assign(Object.create(proto), obj);
     }
 
     return Object.assign(Object.create(setProto()), obj);
