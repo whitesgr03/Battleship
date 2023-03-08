@@ -421,9 +421,31 @@ const createBattleShip = () => {
                                 once: true,
                             }
                         );
+
                         if (hitShip.isSunk()) {
                             ship.classList.add("destroyed");
+                            attacker.setPreviousHitPos(null);
+                            attacker.setPossiblePos([]);
+                        } else {
+                            const hasPreviousPos = attacker.getPreviousHitPos();
+
+                            if (hasPreviousPos) {
+                                const sameAxisPos = attacker.filterPossiblePos([
+                                    x,
+                                    y,
+                                ]);
+                                attacker.setPossiblePos(sameAxisPos);
+                            } else {
+                                const possiblePos = attacker.calcPossiblePos([
+                                    x,
+                                    y,
+                                ]);
+
+                                attacker.setPossiblePos(possiblePos);
+                                attacker.setPreviousHitPos([x, y]);
+                            }
                         }
+
                         ship.classList.remove("shake");
                     },
                     { once: true }
@@ -460,7 +482,21 @@ const createBattleShip = () => {
             let position = null;
 
             do {
-                position = battlePanel.getComputerPos();
+                const possiblePos = newAttacker.getPossiblePos();
+
+                if (possiblePos.length > 0) {
+                    const index = common.randomInteger(
+                        0,
+                        possiblePos.length - 1
+                    );
+
+                    position = possiblePos.splice(index, 1)[0];
+                } else {
+                    position = [
+                        common.randomInteger(1, 10),
+                        common.randomInteger(1, 10),
+                    ];
+                }
             } while (newAttacker.isDuplicateAttack(position));
 
             sendAttack(position);
