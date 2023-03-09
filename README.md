@@ -1,7 +1,7 @@
 
 # Battleship 
 
-[LIVE Preview](whitesgr03.github.io/Battleship/)
+[LIVE Preview](https://whitesgr03.github.io/Battleship/)
 
 Battleship is a strategy guessing game against the computer where players try to sink all of their opponent's ships.
 
